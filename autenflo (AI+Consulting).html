@@ -1,0 +1,1890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>autenflo — your business on autopilot</title>
+<meta name="description" content="autenflo is a business, technology & AI consulting partner — we advise on strategy, optimize your processes, and build the automation that takes manual busywork off your team's plate, for growing companies worldwide." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          base: '#FBFCFD', section: '#F5F7F9', surface: '#FFFFFF',
+          ink: '#17202A', muted: '#667085', line: '#E6EAF0',
+          aut: '#78AEEA', en: '#B49BEA', flo: '#72C5AF',
+        },
+        fontFamily: {
+          display: ['Outfit', 'sans-serif'],
+          body: ['Plus Jakarta Sans', 'sans-serif'],
+        },
+      }
+    }
+  }
+</script>
+
+<style>
+  :root{ --aut:#78AEEA; --en:#B49BEA; --flo:#72C5AF; --ink:#17202A; --muted:#667085; --line:#E6EAF0; }
+  *{ scroll-behavior: smooth; }
+  body{ background-color:#FBFCFD; font-family:'Plus Jakarta Sans', sans-serif; color:#17202A; overflow-x: clip; }
+  h1,h2,h3,h4,.font-display{ font-family:'Outfit', sans-serif; }
+  ::selection{ background:#B49BEA33; color:#17202A; }
+  :focus-visible{ outline:2px solid var(--aut); outline-offset:3px; border-radius:6px; }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; }
+  }
+
+  .aurora{ position:absolute; inset:0; overflow:hidden; pointer-events:none; z-index:0; }
+  .aurora span{ position:absolute; border-radius:9999px; filter:blur(70px); opacity:0.5; }
+  @keyframes auroraMove1{ 0%,100%{ transform:translate(0,0) scale(1);} 50%{ transform:translate(60px,40px) scale(1.15);} }
+  @keyframes auroraMove2{ 0%,100%{ transform:translate(0,0) scale(1);} 50%{ transform:translate(-50px,30px) scale(1.1);} }
+  @keyframes auroraMove3{ 0%,100%{ transform:translate(0,0) scale(1);} 50%{ transform:translate(30px,-40px) scale(1.2);} }
+  .aurora .a1{ width:38vw; height:38vw; left:-8%; top:-10%; background:#78AEEA; animation:auroraMove1 16s ease-in-out infinite; }
+  .aurora .a2{ width:32vw; height:32vw; right:-6%; top:0%; background:#B49BEA; animation:auroraMove2 19s ease-in-out infinite; }
+  .aurora .a3{ width:30vw; height:30vw; left:30%; bottom:-18%; background:#72C5AF; animation:auroraMove3 21s ease-in-out infinite; }
+
+  @keyframes drift{ 0%{ transform:translateY(0) translateX(0); opacity:0; } 10%{ opacity:.7; } 90%{ opacity:.5; } 100%{ transform:translateY(-140px) translateX(20px); opacity:0; } }
+  .particle{ position:absolute; border-radius:9999px; animation:drift linear infinite; }
+
+  @keyframes float{ 0%,100%{ transform: translateY(0px) rotate(0deg);} 50%{ transform: translateY(-14px) rotate(1deg);} }
+  @keyframes floatSlow{ 0%,100%{ transform: translateY(0px);} 50%{ transform: translateY(-9px);} }
+  .float-a{ animation: float 7s ease-in-out infinite; }
+  .float-b{ animation: floatSlow 8.5s ease-in-out infinite; animation-delay: -2.3s; }
+  .float-c{ animation: float 6.2s ease-in-out infinite; animation-delay: -4.1s; }
+
+  @keyframes pulseGlow{
+    0%,100%{ box-shadow: 0 0 0 0 rgba(120,174,234,0.28), 0 10px 30px -10px rgba(23,32,42,0.12); }
+    50%{ box-shadow: 0 0 0 14px rgba(120,174,234,0), 0 10px 30px -10px rgba(23,32,42,0.12); }
+  }
+  .glow-pulse{ animation: pulseGlow 3.2s ease-in-out infinite; }
+
+  @keyframes borderTravel{ to{ background-position: 300% 0; } }
+  .glow-border{ position:relative; border-radius:20px; }
+  .glow-border::before{
+    content:''; position:absolute; inset:-1.5px; border-radius:inherit; padding:1.5px;
+    background: linear-gradient(90deg, var(--aut), var(--en), var(--flo), var(--aut));
+    background-size:300% 100%;
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor; mask-composite: exclude;
+    animation: borderTravel 6s linear infinite; opacity:0; transition: opacity .35s ease; pointer-events:none;
+  }
+  .glow-border:hover::before, .glow-border:focus-within::before{ opacity:1; }
+  .glow-border-always::before{ opacity:1; }
+
+  @keyframes dashFlow{ to{ stroke-dashoffset: -120; } }
+  .flow-line{ stroke-dasharray: 6 8; animation: dashFlow 3.5s linear infinite; }
+
+  @keyframes corePulse{ 0%,100%{ transform: scale(1); opacity:0.55; } 50%{ transform: scale(1.18); opacity:0.05; } }
+  .core-ring{ animation: corePulse 2.6s ease-in-out infinite; transform-origin:center; }
+  .core-ring2{ animation: corePulse 2.6s ease-in-out infinite; animation-delay:-1.3s; transform-origin:center; }
+
+  @keyframes shimmerBadge{ 0%,100%{ transform: translateY(0);} 50%{ transform: translateY(-6px);} }
+  .badge-float{ animation: shimmerBadge 4.5s ease-in-out infinite; }
+
+  .card-lift{ transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s ease; }
+  .card-lift:hover{ transform: translateY(-6px); box-shadow: 0 24px 48px -20px rgba(23,32,42,0.16); }
+
+  .num-tabular{ font-variant-numeric: tabular-nums; }
+
+  .range-flo::-webkit-slider-thumb{ -webkit-appearance:none; appearance:none; width:20px; height:20px; border-radius:9999px; background:#72C5AF; border:3px solid white; box-shadow: 0 2px 8px rgba(23,32,42,0.25); cursor:pointer; margin-top:-8px; }
+  .range-flo::-webkit-slider-runnable-track{ height:4px; border-radius:9999px; background:#E6EAF0; }
+  .range-flo::-moz-range-thumb{ width:20px; height:20px; border-radius:9999px; background:#72C5AF; border:3px solid white; box-shadow: 0 2px 8px rgba(23,32,42,0.25); cursor:pointer; }
+  .range-flo::-moz-range-track{ height:4px; border-radius:9999px; background:#E6EAF0; }
+
+  .grid-mesh{
+    background-image: linear-gradient(#E6EAF0 1px, transparent 1px), linear-gradient(90deg, #E6EAF0 1px, transparent 1px);
+    background-size: 42px 42px;
+    -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 40%, #000 40%, transparent 90%);
+    mask-image: radial-gradient(ellipse 70% 70% at 50% 40%, #000 40%, transparent 90%);
+  }
+
+  .reveal{ opacity:0; transform: translateY(26px); transition: opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+  .reveal-scale{ opacity:0; transform: scale(.92); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
+  .reveal-scale.in{ opacity:1; transform:scale(1); }
+
+  @keyframes marquee{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
+  .marquee-track{ animation: marquee 26s linear infinite; }
+  .marquee-wrap:hover .marquee-track{ animation-play-state: paused; }
+
+  .orbit-node{ position:absolute; transform:translate(-50%,-50%); }
+  @keyframes ringSpin{ to{ transform: rotate(360deg); } }
+  .orbit-ring{ animation: ringSpin 40s linear infinite; }
+  .orbit-ring-rev{ animation: ringSpin 55s linear infinite reverse; }
+
+  .illus-icon{ transition: transform .5s cubic-bezier(.2,.8,.2,1); }
+  .illus-card:hover .illus-icon{ transform: scale(1.08) rotate(-2deg); }
+
+  /* mini branded loader */
+  .mini-orbit{ position:relative; width:92px; height:92px; }
+  .mini-orbit .dot{ position:absolute; top:50%; left:50%; width:10px; height:10px; margin:-5px; border-radius:9999px; animation: miniOrbitSpin 1.8s linear infinite; }
+  .mini-orbit-core{ position:absolute; inset:19px; border-radius:9999px; background:#FFFFFF; border:1px solid #E6EAF0; box-shadow:0 4px 14px rgba(23,32,42,0.08); display:flex; align-items:center; justify-content:center; }
+  .mini-orbit-logo{ font-family:'Outfit', sans-serif; font-weight:800; font-size:10px; letter-spacing:-0.02em; }
+  @keyframes miniOrbitSpin{ from{ transform:rotate(0deg) translateX(38px) rotate(0deg);} to{ transform:rotate(360deg) translateX(38px) rotate(-360deg);} }
+
+  /* story timeline */
+  .story-line{ position:relative; height:2px; background:#E6EAF0; overflow:hidden; }
+  .story-line::after{ content:''; position:absolute; top:0; left:-30%; width:30%; height:100%; background:linear-gradient(90deg, transparent, #78AEEA, #B49BEA, #72C5AF, transparent); animation: storySweep 3.4s linear infinite; }
+  @keyframes storySweep{ from{ left:-30%; } to{ left:100%; } }
+
+  .fade-swap{ transition: opacity .3s ease; }
+
+  /* proposal comparison toggle */
+  .cmp-tab{ color:#667085; background:transparent; }
+  .cmp-tab.is-active{ background:#fff; color:#17202A; box-shadow:0 1px 4px rgba(23,32,42,0.12); }
+
+  /* ---------------- booking modal ---------------- */
+  @keyframes modalPop{ from{ opacity:0; transform: translateY(16px) scale(.97); } to{ opacity:1; transform: translateY(0) scale(1); } }
+  #bookingModal{ animation: modalPop .35s cubic-bezier(.2,.8,.2,1); }
+  .date-pill{ flex:0 0 auto; white-space:nowrap; padding:.6rem 1rem; border-radius:9999px; border:1.5px solid #E6EAF0; background:#FFFFFF; font-size:.8rem; font-weight:600; color:#17202A; cursor:pointer; transition:all .2s ease; }
+  .date-pill:hover{ border-color:#78AEEA; }
+  .date-pill.selected{ border-color:#72C5AF; color:#2C8A6E; background:rgba(114,197,175,.1); box-shadow:0 0 0 3px rgba(114,197,175,.12); }
+  .time-pill{ padding:.75rem .5rem; border-radius:12px; border:1.5px solid #E6EAF0; background:#FFFFFF; font-size:.82rem; font-weight:600; color:#17202A; cursor:pointer; transition:all .2s ease; text-align:center; }
+  .time-pill:hover:not(:disabled){ border-color:#78AEEA; background:rgba(120,174,234,.06); }
+  .time-pill.selected{ border-color:#78AEEA; background:rgba(120,174,234,.12); color:#3E6FA8; box-shadow:0 0 0 3px rgba(120,174,234,.14); }
+  .time-pill:disabled{ color:#a3adba; text-decoration:line-through; background:#F5F7F9; cursor:not-allowed; opacity:.7; }
+
+  /* ---------------- custom cursor (pointer devices only) ---------------- */
+  .has-custom-cursor, .has-custom-cursor *{ cursor:none !important; }
+  #cursorDot, #cursorRing{ position:fixed; top:0; left:0; z-index:[300]; pointer-events:none; border-radius:9999px; will-change:transform; }
+  #cursorDot{ width:7px; height:7px; background:#17202A; z-index:300; }
+  #cursorRing{ width:34px; height:34px; border:1.5px solid rgba(23,32,42,0.35); z-index:299; transition: width .25s ease, height .25s ease, border-color .25s ease, background .25s ease; }
+  #cursorRing.hovering{ width:56px; height:56px; border-color:#72C5AF; background:rgba(114,197,175,.08); }
+
+  /* ---------------- scroll progress ---------------- */
+  #scrollProgress{ position:fixed; top:0; left:0; height:3px; width:0%; z-index:200; background:linear-gradient(90deg,#78AEEA,#B49BEA,#72C5AF); transition:width .1s linear; }
+
+  /* ---------------- story: staff vs system ---------------- */
+  .story-toggle-track{ position:relative; width:64px; height:34px; border-radius:9999px; background:#E6EAF0; cursor:pointer; transition:background .3s ease; flex:0 0 auto; }
+  .story-toggle-track.on{ background:#72C5AF; }
+  .story-toggle-knob{ position:absolute; top:3px; left:3px; width:28px; height:28px; border-radius:9999px; background:#fff; box-shadow:0 2px 6px rgba(23,32,42,.25); transition:transform .3s cubic-bezier(.2,.8,.2,1); }
+  .story-toggle-track.on .story-toggle-knob{ transform:translateX(30px); }
+  .cost-bar{ height:14px; border-radius:9999px; background:#E6EAF0; overflow:hidden; }
+  .cost-bar-fill{ height:100%; border-radius:9999px; transition: width 1s cubic-bezier(.2,.8,.2,1); }
+
+  /* ---------------- story: bespoke blueprint ---------------- */
+  .blueprint-path{ stroke-dasharray:600; stroke-dashoffset:600; transition:stroke-dashoffset 1.8s cubic-bezier(.2,.8,.2,1); }
+  .blueprint-path.drawn{ stroke-dashoffset:0; }
+  .blueprint-card{ transition:transform .4s cubic-bezier(.2,.8,.2,1), box-shadow .4s ease, border-color .4s ease; }
+  .blueprint-card:hover{ transform:translateY(-8px) rotate(-0.3deg); box-shadow:0 30px 60px -24px rgba(23,32,42,0.22); }
+
+  /* ---------------- client logo chips ---------------- */
+  .client-logo-mark{ width:34px; height:34px; border-radius:9px; display:flex; align-items:center; justify-content:center; font-family:'Outfit',sans-serif; font-weight:800; font-size:12px; color:#fff; flex-shrink:0; }
+
+  /* ---------------- illustration scenes ---------------- */
+  .scene-float-1{ animation: float 6.5s ease-in-out infinite; }
+  .scene-float-2{ animation: floatSlow 7.8s ease-in-out infinite; animation-delay:-2s; }
+  .scene-float-3{ animation: float 5.6s ease-in-out infinite; animation-delay:-3.4s; }
+
+  @media (max-width: 768px){
+    #cursorDot, #cursorRing{ display:none; }
+  }
+</style>
+</head>
+
+<body class="antialiased">
+
+<div id="scrollProgress"></div>
+<div id="cursorRing"></div>
+<div id="cursorDot"></div>
+
+<!-- ================= NAV ================= -->
+<header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-line">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
+    <a href="#top" class="shrink-0" aria-label="autenflo home">
+      <img src="logo.png" alt="autenflo" class="h-12 sm:h-14 w-auto drop-shadow-sm" />
+    </a>
+
+    <nav class="hidden md:flex items-center gap-9 text-[15px] font-medium text-ink/80">
+      <a href="#for-you" class="relative group py-1">Who it's for<span class="absolute left-0 -bottom-0.5 h-[2px] w-0 bg-flo transition-all duration-300 group-hover:w-full"></span></a>
+      <a href="#services" class="relative group py-1">Services<span class="absolute left-0 -bottom-0.5 h-[2px] w-0 bg-flo transition-all duration-300 group-hover:w-full"></span></a>
+      <a href="#how-it-works" class="relative group py-1">How it works<span class="absolute left-0 -bottom-0.5 h-[2px] w-0 bg-flo transition-all duration-300 group-hover:w-full"></span></a>
+      <a href="#departments" class="relative group py-1">What it covers<span class="absolute left-0 -bottom-0.5 h-[2px] w-0 bg-flo transition-all duration-300 group-hover:w-full"></span></a>
+      <a href="#roi" class="relative group py-1">ROI calculator<span class="absolute left-0 -bottom-0.5 h-[2px] w-0 bg-flo transition-all duration-300 group-hover:w-full"></span></a>
+      <a href="#showcase" class="relative group py-1">Results<span class="absolute left-0 -bottom-0.5 h-[2px] w-0 bg-flo transition-all duration-300 group-hover:w-full"></span></a>
+    </nav>
+
+    <button type="button" data-open-booking class="inline-flex items-center gap-2 rounded-full bg-flo px-4 sm:px-5 py-2.5 text-[15px] font-semibold text-white shadow-[0_8px_20px_-8px_rgba(114,197,175,0.7)] hover:brightness-95 transition cursor-hover">
+      <i data-lucide="calendar-clock" class="w-4 h-4"></i>
+      <span class="hidden sm:inline">Book 15-min call</span>
+      <span class="sm:hidden">Book call</span>
+    </button>
+  </div>
+</header>
+
+<!-- ================= BOOKING MODAL ================= -->
+<div id="bookingOverlay" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 bg-ink/50 backdrop-blur-sm">
+  <div id="bookingModal" class="relative w-full max-w-lg bg-white rounded-[24px] border border-line shadow-[0_30px_80px_-20px_rgba(23,32,42,0.35)] p-6 sm:p-8 max-h-[92vh] overflow-y-auto">
+    <button type="button" id="bookingModalClose" aria-label="Close" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-section hover:bg-line flex items-center justify-center transition cursor-hover">
+      <i data-lucide="x" class="w-4 h-4 text-ink"></i>
+    </button>
+
+    <div class="inline-flex items-center gap-2 rounded-full border border-flo/30 bg-flo/10 px-3.5 py-1.5 text-xs font-bold tracking-wide text-flo mb-4">
+      <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+      DIRECT STRATEGY BOOKING
+    </div>
+    <h3 class="font-display text-2xl sm:text-[1.7rem] font-bold text-ink tracking-tight pr-10">Book 15-Min Strategy Call</h3>
+
+    <div class="border-t border-line my-5"></div>
+
+    <div class="mb-6">
+      <p class="flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-muted mb-3">
+        <i data-lucide="calendar" class="w-3.5 h-3.5 text-flo"></i>Select date
+      </p>
+      <div id="modalDateList" class="flex gap-2 overflow-x-auto pb-1 [scrollbar-width:thin]"></div>
+    </div>
+
+    <div class="mb-6">
+      <p id="modalTimeLabel" class="flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-muted mb-3">
+        <i data-lucide="clock" class="w-3.5 h-3.5 text-flo"></i><span id="modalTimeLabelText">Select time</span>
+      </p>
+      <div id="modalTimeList" class="grid grid-cols-3 gap-2"></div>
+      <p id="modalTimeLoading" class="hidden text-xs text-muted mt-3 flex items-center gap-2">
+        <span class="w-3 h-3 rounded-full border-2 border-flo border-t-transparent animate-spin inline-block"></span>
+        Checking live availability…
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 gap-3 mb-5">
+      <input id="modalName" type="text" required placeholder="Your name" class="rounded-xl border border-line bg-section px-4 py-2.5 text-sm text-ink focus:bg-white focus:border-aut transition">
+      <input id="modalEmail" type="email" required placeholder="Work email" class="rounded-xl border border-line bg-section px-4 py-2.5 text-sm text-ink focus:bg-white focus:border-aut transition">
+    </div>
+
+    <button type="button" id="modalConfirm" disabled class="w-full inline-flex items-center justify-center gap-2 rounded-full bg-flo px-6 py-3.5 text-[15px] font-semibold text-white hover:brightness-95 transition disabled:opacity-45 disabled:cursor-not-allowed cursor-hover">
+      <span id="modalConfirmLabel">🚀 Confirm Meeting</span>
+    </button>
+
+    <p id="modalFeedback" class="hidden mt-4 text-sm text-center rounded-xl px-4 py-3 border"></p>
+    <p class="mt-4 text-center text-[11px] text-muted">Synced with our calendar — booked slots are shown crossed out.</p>
+  </div>
+</div>
+
+<main id="top">
+
+<!-- ================= HERO ================= -->
+<section class="relative overflow-hidden pt-14 pb-28 lg:pt-20 lg:pb-36">
+  <div class="aurora"><span class="a1"></span><span class="a2"></span><span class="a3"></span></div>
+  <div class="absolute inset-0 grid-mesh"></div>
+  <div id="particleField" class="absolute inset-0 z-[1] pointer-events-none hidden lg:block"></div>
+
+  <!-- decorative vector network graphic -->
+  <svg class="hidden xl:block absolute top-16 right-[2%] w-[300px] h-[300px] opacity-70 float-a z-0" viewBox="0 0 300 300" aria-hidden="true">
+    <g fill="none" stroke="#E6EAF0" stroke-width="1.4">
+      <line x1="40" y1="60" x2="140" y2="40"/>
+      <line x1="140" y1="40" x2="230" y2="90"/>
+      <line x1="140" y1="40" x2="120" y2="150"/>
+      <line x1="120" y1="150" x2="40" y2="60"/>
+      <line x1="120" y1="150" x2="230" y2="90"/>
+      <line x1="120" y1="150" x2="180" y2="230"/>
+    </g>
+    <circle cx="40" cy="60" r="6" fill="#78AEEA"/>
+    <circle cx="140" cy="40" r="8" fill="#B49BEA"/>
+    <circle cx="230" cy="90" r="6" fill="#72C5AF"/>
+    <circle cx="120" cy="150" r="9" fill="#78AEEA"/>
+    <circle cx="180" cy="230" r="6" fill="#B49BEA"/>
+  </svg>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-2 gap-14 lg:gap-16 items-center">
+
+    <div class="reveal">
+      <div class="inline-flex items-center gap-2 rounded-full border border-line bg-white px-3.5 py-1.5 text-sm text-muted mb-7">
+        <i data-lucide="sparkles" class="w-3.5 h-3.5 text-en"></i>
+        Consulting, technology &amp; automation, in one place
+      </div>
+
+      <h1 class="font-display text-[2.5rem] leading-[1.1] sm:text-6xl sm:leading-[1.05] font-bold text-ink tracking-tight">
+        Your business on autopilot
+      </h1>
+
+      <p class="mt-6 text-lg text-muted max-w-lg leading-relaxed">
+        autenflo studies how your business actually runs, advises on the strategy and systems
+        it needs next, then builds the automations that quietly take the repetitive parts off
+        everyone's plate — follow-ups, onboarding, support replies, the monthly close.
+      </p>
+
+      <div class="mt-9 flex flex-wrap items-center gap-4">
+        <a href="#proposal" class="inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3.5 text-[15px] font-semibold text-white hover:bg-ink/90 transition">
+          See what we'd automate
+          <i data-lucide="arrow-down" class="w-4 h-4"></i>
+        </a>
+        <button type="button" data-open-booking class="inline-flex items-center gap-2 rounded-full border border-line bg-white px-6 py-3.5 text-[15px] font-semibold text-ink hover:border-ink/30 transition cursor-hover">
+          Talk to a strategist
+          <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+      <div class="mt-12 flex flex-wrap items-start gap-x-8 gap-y-5 text-sm text-muted">
+        <div class="min-w-[84px]"><span class="font-display text-2xl font-bold text-ink num-tabular" data-count="40" data-suffix="+">0</span><br>teams automated</div>
+        <div class="w-px h-9 bg-line hidden sm:block"></div>
+        <div class="min-w-[110px]"><span class="font-display text-2xl font-bold text-ink num-tabular" data-count="18000" data-suffix="+">0</span><br>hours saved / yr</div>
+        <div class="w-px h-9 bg-line hidden sm:block"></div>
+        <div class="min-w-[90px]"><span class="font-display text-2xl font-bold text-ink">2–4 wks</span><br>typical build time</div>
+      </div>
+    </div>
+
+    <!-- ===== AI Proposal Generator ===== -->
+    <div id="proposal" class="relative reveal" style="transition-delay:.1s">
+      <div class="glow-border glow-border-always card-lift">
+        <div class="relative rounded-[20px] bg-white border border-line p-6 sm:p-8 shadow-[0_20px_50px_-24px_rgba(23,32,42,0.18)]">
+          <div class="flex items-center gap-3 mb-1">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-aut via-en to-flo flex items-center justify-center shrink-0">
+              <i data-lucide="wand-sparkles" class="w-5 h-5 text-white"></i>
+            </div>
+            <h2 class="font-display text-lg sm:text-xl font-semibold text-ink leading-snug">Get an instant automation proposal</h2>
+          </div>
+          <p class="text-sm text-muted mb-5 sm:ml-[52px]">No call needed — describe one bottleneck and see the numbers.</p>
+
+          <form id="proposalForm" class="space-y-4">
+            <label for="bottleneck" class="sr-only">Describe your operational bottleneck</label>
+            <textarea
+              id="bottleneck" rows="3" required
+              placeholder="e.g. 'Our team manually copies new leads from forms into a spreadsheet and follows up by hand.'"
+              class="w-full resize-none rounded-2xl border border-line bg-section px-4 py-3.5 text-[15px] text-ink placeholder:text-muted/70 focus:bg-white focus:border-aut transition"
+            ></textarea>
+
+            <button type="submit" id="proposalSubmit"
+              class="w-full inline-flex items-center justify-center gap-2 rounded-full bg-ink px-6 py-3.5 text-[15px] font-semibold text-white hover:bg-ink/90 transition disabled:opacity-60">
+              <span id="proposalBtnLabel">Generate proposal</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
+          </form>
+
+          <div id="proposalResults" class="mt-6 hidden"></div>
+          <div id="proposalError" class="mt-5 hidden rounded-2xl border border-line bg-section px-4 py-3 text-sm text-muted"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="reveal relative z-10 mt-20 lg:mt-24">
+    <p class="text-center text-xs font-medium tracking-wide text-muted mb-5">Fits into how your team already works</p>
+    <div class="marquee-wrap overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_10%,black_90%,transparent)]">
+      <div class="marquee-track flex w-max gap-4">
+        <div class="flex gap-4">
+          <span class="inline-flex items-center gap-2 rounded-full bg-white border border-line px-4 py-2 text-sm text-ink/80"><i data-lucide="message-circle" class="w-4 h-4 text-aut"></i>WhatsApp updates</span>
+          <span class="inline-flex items-center gap-2 rounded-full bg-white border border-line px-4 py-2 text-sm text-ink/80"><i data-lucide="file-spreadsheet" class="w-4 h-4 text-en"></i>Spreadsheets</span>
+          <span class="inline-flex items-center gap-2 rounded-full bg-white border border-line px-4 py-2 text-sm text-ink/80"><i data-lucide="receipt" class="w-4 h-4 text-flo"></i>Invoicing tools</span>
+          <span class="inline-flex items-center gap-2 rounded-full bg-white border border-line px-4 py-2 text-sm text-ink/80"><i data-lucide="users-round" class="w-4 h-4 text-aut"></i>Your CRM</span>
+          <span class="inline-flex items-center gap-2 rounded-full bg-white border border-line px-4 py-2 text-sm text-ink/80"><i data-lucide="banknote" class="w-4 h-4 text-en"></i>Payroll</span>
+          <span class="inline-flex items-center gap-2 rounded-full bg-white border border-line px-4 py-2 text-sm text-ink/80"><i data-lucide="boxes" class="w-4 h-4 text-flo"></i>Inventory sheets</span>
+          <span class="inline-flex items-center gap-2 rounded-full bg-white border border-line px-4 py-2 text-sm text-ink/80"><i data-lucide="mail" class="w-4 h-4 text-aut"></i>Email &amp; inbox</span>
+        </div>
+        <div class="flex gap-4" aria-hidden="true">
+          <span class="inline-flex items-center gap-2 rounded-full bg-white border border-line px-4 py-2 text-sm text-ink/80"><i data-lucide="message-circle" class="w-4 h-4 text-aut"></i>WhatsApp updates</span>
+          <span class="inline-flex items-center gap-2 rounded-full bg-white border border-line px-4 py-2 text-sm text-ink/80"><i data-lucide="file-spreadsheet" class="w-4 h-4 text-en"></i>Spreadsheets</span>
+          <span class="inline-flex items-center gap-2 rounded-full bg-white border border-line px-4 py-2 text-sm text-ink/80"><i data-lucide="receipt" class="w-4 h-4 text-flo"></i>Invoicing tools</span>
+          <span class="inline-flex items-center gap-2 rounded-full bg-white border border-line px-4 py-2 text-sm text-ink/80"><i data-lucide="users-round" class="w-4 h-4 text-aut"></i>Your CRM</span>
+          <span class="inline-flex items-center gap-2 rounded-full bg-white border border-line px-4 py-2 text-sm text-ink/80"><i data-lucide="banknote" class="w-4 h-4 text-en"></i>Payroll</span>
+          <span class="inline-flex items-center gap-2 rounded-full bg-white border border-line px-4 py-2 text-sm text-ink/80"><i data-lucide="boxes" class="w-4 h-4 text-flo"></i>Inventory sheets</span>
+          <span class="inline-flex items-center gap-2 rounded-full bg-white border border-line px-4 py-2 text-sm text-ink/80"><i data-lucide="mail" class="w-4 h-4 text-aut"></i>Email &amp; inbox</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WHO IT'S FOR ================= -->
+<section id="for-you" class="py-14 lg:py-20 bg-section border-y border-line">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="max-w-xl mb-14 reveal">
+      <div class="inline-flex items-center gap-2 rounded-full border border-line bg-white px-3.5 py-1.5 text-sm text-muted mb-5"><i data-lucide="rocket" class="w-3.5 h-3.5 text-aut"></i>Made for growing teams</div>
+      <h2 class="font-display text-3xl sm:text-4xl font-bold text-ink tracking-tight">Built for teams still running on people, not systems</h2>
+      <p class="mt-4 text-muted text-lg leading-relaxed">Most growing businesses outgrow spreadsheets and ad-hoc strategy long before they get time to fix either. That's exactly where we start.</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+
+      <div class="illus-card reveal rounded-[20px] overflow-hidden bg-white border border-line card-lift" style="transition-delay:.05s">
+        <div class="h-48 overflow-hidden relative bg-gradient-to-br from-aut/15 via-white to-en/10 flex items-center justify-center">
+          <div class="absolute inset-0 grid-mesh opacity-60"></div>
+          <svg class="illus-icon relative w-full h-full" viewBox="0 0 260 160" fill="none" aria-hidden="true">
+            <rect x="34" y="122" width="192" height="8" rx="4" fill="#E6EAF0"/>
+            <rect x="94" y="86" width="72" height="38" rx="6" fill="#FFFFFF" stroke="#E6EAF0" stroke-width="2"/>
+            <rect x="100" y="92" width="60" height="22" rx="3" fill="#78AEEA" opacity="0.18"/>
+            <circle cx="130" cy="62" r="20" fill="#78AEEA"/>
+            <rect x="110" y="80" width="40" height="30" rx="14" fill="#78AEEA"/>
+            <g class="scene-float-1"><rect x="26" y="26" width="58" height="36" rx="11" fill="#FFFFFF" stroke="#B49BEA" stroke-width="2"/><circle cx="42" cy="44" r="3" fill="#B49BEA"/><circle cx="55" cy="44" r="3" fill="#B49BEA"/><circle cx="68" cy="44" r="3" fill="#B49BEA"/></g>
+            <g class="scene-float-2"><rect x="172" y="22" width="62" height="46" rx="9" fill="#FFFFFF" stroke="#72C5AF" stroke-width="2"/><line x1="172" y1="37" x2="234" y2="37" stroke="#72C5AF" stroke-width="1.5"/><line x1="172" y1="50" x2="234" y2="50" stroke="#72C5AF" stroke-width="1.5" opacity="0.55"/><line x1="196" y1="22" x2="196" y2="68" stroke="#72C5AF" stroke-width="1.5" opacity="0.55"/></g>
+            <g class="scene-float-3"><circle cx="206" cy="104" r="15" fill="#FFFFFF" stroke="#78AEEA" stroke-width="2"/><path d="M200 104 q6 -7 12 0" fill="none" stroke="#78AEEA" stroke-width="2" stroke-linecap="round"/></g>
+          </svg>
+        </div>
+        <div class="p-6">
+          <span class="inline-block text-xs font-semibold text-aut bg-aut/10 rounded-full px-3 py-1 mb-3">5–50 people</span>
+          <h3 class="font-display text-lg font-semibold text-ink mb-2">Growing fast, tracking by hand</h3>
+          <p class="text-sm text-muted leading-relaxed">Leads, orders, and approvals living across WhatsApp chats and spreadsheets, held together by whoever remembers to follow up.</p>
+        </div>
+      </div>
+
+      <div class="illus-card reveal rounded-[20px] overflow-hidden bg-white border border-line card-lift" style="transition-delay:.15s">
+        <div class="h-48 overflow-hidden relative bg-gradient-to-br from-en/15 via-white to-flo/10 flex items-center justify-center">
+          <div class="absolute inset-0 grid-mesh opacity-60"></div>
+          <svg class="illus-icon relative w-full h-full" viewBox="0 0 260 160" fill="none" aria-hidden="true">
+            <circle cx="130" cy="70" r="21" fill="#B49BEA"/>
+            <rect x="109" y="90" width="42" height="32" rx="14" fill="#B49BEA"/>
+            <path d="M108 66 a22 22 0 0 1 44 0" fill="none" stroke="#7A5FC2" stroke-width="4" stroke-linecap="round"/>
+            <rect x="102" y="62" width="8" height="14" rx="4" fill="#7A5FC2"/>
+            <rect x="150" y="62" width="8" height="14" rx="4" fill="#7A5FC2"/>
+            <g class="scene-float-1"><rect x="24" y="34" width="54" height="34" rx="9" fill="#FFFFFF" stroke="#72C5AF" stroke-width="2"/><path d="M35 51 l7 7 13 -14" fill="none" stroke="#72C5AF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></g>
+            <g class="scene-float-2"><rect x="178" y="30" width="56" height="34" rx="9" fill="#FFFFFF" stroke="#78AEEA" stroke-width="2"/><circle cx="192" cy="47" r="3" fill="#78AEEA"/><circle cx="205" cy="47" r="3" fill="#78AEEA"/><circle cx="218" cy="47" r="3" fill="#78AEEA"/></g>
+            <g class="scene-float-3"><circle cx="196" cy="110" r="17" fill="#FFFFFF" stroke="#B49BEA" stroke-width="2"/><path d="M196 102 v9 l6 5" fill="none" stroke="#B49BEA" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></g>
+            <g class="scene-float-2"><circle cx="40" cy="116" r="14" fill="#FFFFFF" stroke="#72C5AF" stroke-width="2"/><path d="M34 116 l4 4 8 -9" fill="none" stroke="#72C5AF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></g>
+          </svg>
+        </div>
+        <div class="p-6">
+          <span class="inline-block text-xs font-semibold text-en bg-en/10 rounded-full px-3 py-1 mb-3">50–200 people</span>
+          <h3 class="font-display text-lg font-semibold text-ink mb-2">Scaled up, but the process didn't</h3>
+          <p class="text-sm text-muted leading-relaxed">The same three people are still copy-pasting between tools that were never meant to talk to each other.</p>
+        </div>
+      </div>
+
+      <div class="illus-card reveal rounded-[20px] overflow-hidden bg-white border border-line card-lift" style="transition-delay:.25s">
+        <div class="h-48 overflow-hidden relative bg-gradient-to-br from-flo/15 via-white to-aut/10 flex items-center justify-center">
+          <div class="absolute inset-0 grid-mesh opacity-60"></div>
+          <svg class="illus-icon relative w-full h-full" viewBox="0 0 260 160" fill="none" aria-hidden="true">
+            <ellipse cx="130" cy="128" rx="46" ry="7" fill="#E6EAF0"/>
+            <circle cx="130" cy="76" r="20" fill="#72C5AF"/>
+            <rect x="110" y="94" width="40" height="34" rx="14" fill="#72C5AF"/>
+            <g class="scene-float-1"><rect x="70" y="30" width="30" height="30" rx="7" fill="#FFFFFF" stroke="#78AEEA" stroke-width="2.5"/></g>
+            <g class="scene-float-2"><circle cx="130" cy="34" r="16" fill="#FFFFFF" stroke="#B49BEA" stroke-width="2.5"/></g>
+            <g class="scene-float-3"><path d="M175 58 L192 32 L209 58 Z" fill="#FFFFFF" stroke="#72C5AF" stroke-width="2.5" stroke-linejoin="round"/></g>
+            <g class="scene-float-2"><circle cx="205" cy="104" r="17" fill="#FFFFFF" stroke="#78AEEA" stroke-width="2"/><path d="M205 96 v9 l6 5" fill="none" stroke="#78AEEA" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></g>
+            <g class="scene-float-1"><circle cx="46" cy="100" r="14" fill="#FFFFFF" stroke="#B49BEA" stroke-width="2"/><path d="M40 100 l4 4 8 -9" fill="none" stroke="#B49BEA" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></g>
+          </svg>
+        </div>
+        <div class="p-6">
+          <span class="inline-block text-xs font-semibold text-flo bg-flo/10 rounded-full px-3 py-1 mb-3">Founder-run</span>
+          <h3 class="font-display text-lg font-semibold text-ink mb-2">No time to fix the plumbing</h3>
+          <p class="text-sm text-muted leading-relaxed">Everyone agrees the manual work is a problem — nobody has a free week to sit down and solve it.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= SERVICES ================= -->
+<section id="services" class="py-14 lg:py-20 overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="max-w-2xl mb-14 reveal">
+      <div class="inline-flex items-center gap-2 rounded-full border border-line bg-white px-3.5 py-1.5 text-sm text-muted mb-5"><i data-lucide="layers" class="w-3.5 h-3.5 text-flo"></i>One partner, three layers of work</div>
+      <h2 class="font-display text-3xl sm:text-4xl font-bold text-ink tracking-tight">We don't just automate — we help you decide what's worth automating</h2>
+      <p class="mt-4 text-muted text-lg leading-relaxed">Before anything gets built, someone has to work out the strategy, the systems, and the process behind it. That's the part most automation vendors skip — it's where we start.</p>
+    </div>
+
+    <div class="grid lg:grid-cols-3 gap-6">
+
+      <div class="reveal rounded-[20px] bg-white border border-line p-7 card-lift" style="transition-delay:.05s">
+        <div class="w-12 h-12 rounded-xl bg-aut/15 flex items-center justify-center mb-5"><i data-lucide="trending-up" class="w-6 h-6 text-aut"></i></div>
+        <h3 class="font-display text-lg font-semibold text-ink mb-2">Business Consulting</h3>
+        <p class="text-sm text-muted leading-relaxed mb-5">Strategy and financial advisory that turns chaos into a plan, so growth doesn't outrun your ability to manage it.</p>
+        <ul class="space-y-2.5 text-sm text-ink/80">
+          <li class="flex items-center gap-2.5"><i data-lucide="arrow-right" class="w-3.5 h-3.5 text-aut shrink-0"></i>Strategic planning</li>
+          <li class="flex items-center gap-2.5"><i data-lucide="arrow-right" class="w-3.5 h-3.5 text-aut shrink-0"></i>Financial advisory</li>
+          <li class="flex items-center gap-2.5"><i data-lucide="arrow-right" class="w-3.5 h-3.5 text-aut shrink-0"></i>Market analysis</li>
+          <li class="flex items-center gap-2.5"><i data-lucide="arrow-right" class="w-3.5 h-3.5 text-aut shrink-0"></i>Risk management</li>
+        </ul>
+      </div>
+
+      <div class="reveal rounded-[20px] bg-white border border-line p-7 card-lift" style="transition-delay:.15s">
+        <div class="w-12 h-12 rounded-xl bg-en/15 flex items-center justify-center mb-5"><i data-lucide="cloud-cog" class="w-6 h-6 text-en"></i></div>
+        <h3 class="font-display text-lg font-semibold text-ink mb-2">Technology &amp; AI Consulting</h3>
+        <p class="text-sm text-muted leading-relaxed mb-5">Cloud, infrastructure, and AI roadmaps that support the business you're becoming, not just the one you are today.</p>
+        <ul class="space-y-2.5 text-sm text-ink/80">
+          <li class="flex items-center gap-2.5"><i data-lucide="arrow-right" class="w-3.5 h-3.5 text-en shrink-0"></i>Cloud solutions</li>
+          <li class="flex items-center gap-2.5"><i data-lucide="arrow-right" class="w-3.5 h-3.5 text-en shrink-0"></i>AI &amp; automation systems</li>
+          <li class="flex items-center gap-2.5"><i data-lucide="arrow-right" class="w-3.5 h-3.5 text-en shrink-0"></i>IT strategy</li>
+          <li class="flex items-center gap-2.5"><i data-lucide="arrow-right" class="w-3.5 h-3.5 text-en shrink-0"></i>Cybersecurity</li>
+        </ul>
+      </div>
+
+      <div class="reveal rounded-[20px] bg-white border border-line p-7 card-lift" style="transition-delay:.25s">
+        <div class="w-12 h-12 rounded-xl bg-flo/15 flex items-center justify-center mb-5"><i data-lucide="settings-2" class="w-6 h-6 text-flo"></i></div>
+        <h3 class="font-display text-lg font-semibold text-ink mb-2">Process Optimization</h3>
+        <p class="text-sm text-muted leading-relaxed mb-5">Automation and data-driven frameworks that eliminate inefficiency — this is the part we go deepest on.</p>
+        <ul class="space-y-2.5 text-sm text-ink/80">
+          <li class="flex items-center gap-2.5"><i data-lucide="arrow-right" class="w-3.5 h-3.5 text-flo shrink-0"></i>Workflow automation</li>
+          <li class="flex items-center gap-2.5"><i data-lucide="arrow-right" class="w-3.5 h-3.5 text-flo shrink-0"></i>ERP/CRM selection</li>
+          <li class="flex items-center gap-2.5"><i data-lucide="arrow-right" class="w-3.5 h-3.5 text-flo shrink-0"></i>Data analytics</li>
+          <li class="flex items-center gap-2.5"><i data-lucide="arrow-right" class="w-3.5 h-3.5 text-flo shrink-0"></i>Performance metrics</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <p class="mt-10 text-center text-sm text-muted reveal">Most engagements start with process optimization — here's exactly how that part works. <span aria-hidden="true">↓</span></p>
+  </div>
+</section>
+
+<!-- ================= FLOW DIAGRAM ================= -->
+<section id="how-it-works" class="relative py-14 lg:py-20 overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="max-w-xl mb-16 reveal">
+      <div class="inline-flex items-center gap-2 rounded-full border border-line bg-white px-3.5 py-1.5 text-sm text-muted mb-5"><i data-lucide="workflow" class="w-3.5 h-3.5 text-en"></i>From chaos to one system</div>
+      <h2 class="font-display text-3xl sm:text-4xl font-bold text-ink tracking-tight">From scattered manual steps to one system</h2>
+      <p class="mt-4 text-muted text-lg leading-relaxed">Every input your team handles by hand today flows through the same engine and comes out the other side already done.</p>
+    </div>
+
+    <div class="relative reveal-scale">
+      <svg viewBox="0 0 1200 360" class="w-full h-auto" role="img" aria-label="Diagram showing manual tasks flowing into the autenflo engine and out as completed work">
+        <g font-family="Plus Jakarta Sans, sans-serif" font-size="13.5" fill="#17202A">
+          <g class="float-a"><rect x="24" y="28" width="192" height="52" rx="14" fill="#FFFFFF" stroke="#E6EAF0"/><text x="46" y="59">Manual data entry</text></g>
+          <g class="float-b"><rect x="4" y="152" width="192" height="52" rx="14" fill="#FFFFFF" stroke="#E6EAF0"/><text x="26" y="183">Follow-ups by memory</text></g>
+          <g class="float-c"><rect x="24" y="276" width="192" height="52" rx="14" fill="#FFFFFF" stroke="#E6EAF0"/><text x="46" y="307">Spreadsheet checks</text></g>
+        </g>
+
+        <g fill="none" stroke="#78AEEA" stroke-width="2" opacity="0.65"><path class="flow-line" d="M216 54 C 330 54, 350 150, 476 178"/></g>
+        <g fill="none" stroke="#B49BEA" stroke-width="2" opacity="0.65"><path class="flow-line" d="M196 178 C 330 178, 350 178, 476 180"/></g>
+        <g fill="none" stroke="#72C5AF" stroke-width="2" opacity="0.65"><path class="flow-line" d="M216 302 C 330 302, 350 200, 476 182"/></g>
+
+        <circle r="3.5" fill="#78AEEA"><animateMotion dur="3.2s" repeatCount="indefinite" path="M216 54 C 330 54, 350 150, 476 178"/></circle>
+        <circle r="3.5" fill="#B49BEA"><animateMotion dur="3.6s" begin="0.6s" repeatCount="indefinite" path="M196 178 C 330 178, 350 178, 476 180"/></circle>
+        <circle r="3.5" fill="#72C5AF"><animateMotion dur="3.4s" begin="1.1s" repeatCount="indefinite" path="M216 302 C 330 302, 350 200, 476 182"/></circle>
+
+        <g transform="translate(600,180)">
+          <circle r="98" fill="none" stroke="#78AEEA" stroke-width="1" class="core-ring2" opacity="0.5"/>
+          <circle r="82" fill="none" stroke="#78AEEA" stroke-width="1.5" class="core-ring"/>
+          <circle r="66" fill="url(#coreGrad)"/>
+          <circle r="66" fill="none" stroke="#E6EAF0"/>
+          <text x="0" y="-6" text-anchor="middle" font-family="Outfit, sans-serif" font-size="17" font-weight="700" fill="#17202A">autenflo</text>
+          <text x="0" y="16" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="12.5" fill="#667085">engine</text>
+        </g>
+        <defs><radialGradient id="coreGrad" cx="35%" cy="30%" r="80%"><stop offset="0%" stop-color="#FFFFFF"/><stop offset="100%" stop-color="#F5F7F9"/></radialGradient></defs>
+
+        <g fill="none" stroke="#78AEEA" stroke-width="2" opacity="0.65"><path class="flow-line" d="M684 158 C 820 126, 850 58, 988 56"/></g>
+        <g fill="none" stroke="#72C5AF" stroke-width="2" opacity="0.65"><path class="flow-line" d="M684 190 C 820 190, 850 190, 988 182"/></g>
+        <g fill="none" stroke="#B49BEA" stroke-width="2" opacity="0.65"><path class="flow-line" d="M684 212 C 820 252, 850 302, 988 306"/></g>
+
+        <circle r="3.5" fill="#78AEEA"><animateMotion dur="3s" repeatCount="indefinite" path="M684 158 C 820 126, 850 58, 988 56"/></circle>
+        <circle r="3.5" fill="#72C5AF"><animateMotion dur="3.3s" begin="0.5s" repeatCount="indefinite" path="M684 190 C 820 190, 850 190, 988 182"/></circle>
+        <circle r="3.5" fill="#B49BEA"><animateMotion dur="3.5s" begin="1s" repeatCount="indefinite" path="M684 212 C 820 252, 850 302, 988 306"/></circle>
+
+        <g font-family="Plus Jakarta Sans, sans-serif" font-size="13.5" fill="#17202A">
+          <g class="float-c"><rect x="988" y="30" width="190" height="52" rx="14" fill="#FFFFFF" stroke="#72C5AF" stroke-width="1.5"/><text x="1010" y="61">Instantly logged</text></g>
+          <g class="float-a"><rect x="988" y="156" width="190" height="52" rx="14" fill="#FFFFFF" stroke="#72C5AF" stroke-width="1.5"/><text x="1010" y="187">Sent on time</text></g>
+          <g class="float-b"><rect x="988" y="280" width="190" height="52" rx="14" fill="#FFFFFF" stroke="#72C5AF" stroke-width="1.5"/><text x="1010" y="311">Reconciled, no chasing</text></g>
+        </g>
+      </svg>
+
+      <!-- lucide icon badges over nodes -->
+      <div class="absolute rounded-full bg-white border-2 border-aut w-7 h-7 flex items-center justify-center" style="left:18%; top:7.8%; transform:translate(-50%,-50%);"><i data-lucide="pencil" class="w-3.5 h-3.5 text-aut"></i></div>
+      <div class="absolute rounded-full bg-white border-2 border-en w-7 h-7 flex items-center justify-center" style="left:16.3%; top:42.2%; transform:translate(-50%,-50%);"><i data-lucide="mail" class="w-3.5 h-3.5 text-en"></i></div>
+      <div class="absolute rounded-full bg-white border-2 border-flo w-7 h-7 flex items-center justify-center" style="left:18%; top:76.7%; transform:translate(-50%,-50%);"><i data-lucide="table" class="w-3.5 h-3.5 text-flo"></i></div>
+      <div class="absolute rounded-full bg-white border-2 border-flo w-7 h-7 flex items-center justify-center" style="left:98.2%; top:8.3%; transform:translate(-50%,-50%);"><i data-lucide="check" class="w-3.5 h-3.5 text-flo"></i></div>
+      <div class="absolute rounded-full bg-white border-2 border-flo w-7 h-7 flex items-center justify-center" style="left:98.2%; top:43.3%; transform:translate(-50%,-50%);"><i data-lucide="send" class="w-3.5 h-3.5 text-flo"></i></div>
+      <div class="absolute rounded-full bg-white border-2 border-flo w-7 h-7 flex items-center justify-center" style="left:98.2%; top:77.8%; transform:translate(-50%,-50%);"><i data-lucide="badge-check" class="w-3.5 h-3.5 text-flo"></i></div>
+    </div>
+
+    <div class="mt-4 flex justify-center reveal">
+      <div class="inline-flex items-center gap-2 rounded-full bg-white border border-line px-4 py-2 text-sm text-muted">
+        <span class="w-2 h-2 rounded-full bg-flo"></span>
+        Work that used to wait in a queue now finishes itself
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STORY 1: DAY & NIGHT (24-HOUR TIMELINE) ================= -->
+<section id="story-replace" class="relative py-14 lg:py-20 overflow-hidden">
+  <div class="aurora" style="opacity:.5"><span class="a1" style="animation-duration:24s"></span></div>
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 relative z-10">
+    <div class="max-w-2xl mb-14 reveal">
+      <div class="inline-flex items-center gap-2 rounded-full border border-line bg-white px-3.5 py-1.5 text-sm text-muted mb-5"><i data-lucide="infinity" class="w-3.5 h-3.5 text-flo"></i>Runs around the clock</div>
+      <h2 class="font-display text-3xl sm:text-4xl font-bold text-ink tracking-tight">9 AM or 3 AM, your business runs exactly the same.</h2>
+      <p class="mt-4 text-muted text-lg leading-relaxed">No toggle needed to imagine it — here's one ordinary 24 hours for a business that's handed its busywork to autenflo. It doesn't clock in for the night shift — it just never clocked out.</p>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-12 items-start">
+      <div class="reveal">
+        <div class="relative pl-9">
+          <div class="absolute left-[13px] top-1 bottom-1 w-px bg-line"></div>
+
+          <div class="relative pb-7">
+            <div class="absolute -left-9 top-0 w-7 h-7 rounded-full bg-aut/15 border-2 border-white flex items-center justify-center shrink-0"><i data-lucide="mail" class="w-3.5 h-3.5 text-aut"></i></div>
+            <div class="flex items-center gap-2 mb-1"><p class="text-xs font-semibold text-muted">9:14 AM</p><span class="text-[10px] font-medium text-aut bg-aut/10 rounded-full px-2 py-0.5">Morning stand-up</span></div>
+            <p class="text-sm text-ink leading-relaxed">A lead fills out a form right as your team sits down for stand-up. The reply and CRM update go out before the meeting's over.</p>
+          </div>
+
+          <div class="relative pb-7">
+            <div class="absolute -left-9 top-0 w-7 h-7 rounded-full bg-en/15 border-2 border-white flex items-center justify-center shrink-0"><i data-lucide="headset" class="w-3.5 h-3.5 text-en"></i></div>
+            <div class="flex items-center gap-2 mb-1"><p class="text-xs font-semibold text-muted">1:40 PM</p><span class="text-[10px] font-medium text-en bg-en/10 rounded-full px-2 py-0.5">Lunch rush</span></div>
+            <p class="text-sm text-ink leading-relaxed">A customer asks a routine question over chat mid-lunch. It's answered in seconds, whether or not anyone's watching the inbox.</p>
+          </div>
+
+          <div class="relative pb-7">
+            <div class="absolute -left-9 top-0 w-7 h-7 rounded-full bg-flo/15 border-2 border-white flex items-center justify-center shrink-0"><i data-lucide="file-check-2" class="w-3.5 h-3.5 text-flo"></i></div>
+            <div class="flex items-center gap-2 mb-1"><p class="text-xs font-semibold text-muted">6:48 PM</p><span class="text-[10px] font-medium text-flo bg-flo/10 rounded-full px-2 py-0.5">Office empties out</span></div>
+            <p class="text-sm text-ink leading-relaxed">The invoices that came in that day get matched, checked, and filed as everyone packs up for the evening.</p>
+          </div>
+
+          <div class="relative pb-7">
+            <div class="absolute -left-9 top-0 w-7 h-7 rounded-full bg-aut/15 border-2 border-white flex items-center justify-center shrink-0"><i data-lucide="megaphone" class="w-3.5 h-3.5 text-aut"></i></div>
+            <div class="flex items-center gap-2 mb-1"><p class="text-xs font-semibold text-muted">10:20 PM</p><span class="text-[10px] font-medium text-aut bg-aut/10 rounded-full px-2 py-0.5">After hours</span></div>
+            <p class="text-sm text-ink leading-relaxed">Tomorrow's campaign gets scheduled and queued to the right list while your team is home for the night.</p>
+          </div>
+
+          <div class="relative pb-7">
+            <div class="absolute -left-9 top-0 w-7 h-7 rounded-full bg-en/15 border-2 border-white flex items-center justify-center shrink-0"><i data-lucide="send" class="w-3.5 h-3.5 text-en"></i></div>
+            <div class="flex items-center gap-2 mb-1"><p class="text-xs font-semibold text-muted">2:05 AM</p><span class="text-[10px] font-medium text-en bg-en/10 rounded-full px-2 py-0.5">The quiet hours</span></div>
+            <p class="text-sm text-ink leading-relaxed">The follow-up sequence goes out to everyone who's been waiting more than two days.</p>
+          </div>
+
+          <div class="relative">
+            <div class="absolute -left-9 top-0 w-7 h-7 rounded-full bg-flo/15 border-2 border-white flex items-center justify-center shrink-0"><i data-lucide="sunrise" class="w-3.5 h-3.5 text-flo"></i></div>
+            <div class="flex items-center gap-2 mb-1"><p class="text-xs font-semibold text-muted">8:00 AM</p><span class="text-[10px] font-medium text-flo bg-flo/10 rounded-full px-2 py-0.5">Back online</span></div>
+            <p class="text-sm text-ink leading-relaxed">Your team logs back in to a clean queue and a note on everything that happened — day and night, nothing to catch up on.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="glow-border reveal" style="transition-delay:.1s">
+        <div class="rounded-[20px] bg-white border border-line p-7 sm:p-8">
+          <p class="text-sm text-muted mb-6">One process, before and after autenflo</p>
+
+          <div class="space-y-6">
+            <div>
+              <div class="flex items-center gap-2 text-sm mb-2.5 font-medium text-ink"><i data-lucide="wallet" class="w-4 h-4 text-muted"></i>Monthly cost</div>
+              <div class="space-y-1.5">
+                <div class="flex items-center gap-3"><span class="text-[11px] text-muted w-16 shrink-0">Manual</span><div class="cost-bar flex-1"><div class="cost-bar-fill bg-aut" style="width:100%"></div></div><span class="text-xs font-semibold text-ink w-20 text-right num-tabular shrink-0">$1,500</span></div>
+                <div class="flex items-center gap-3"><span class="text-[11px] text-muted w-16 shrink-0">autenflo</span><div class="cost-bar flex-1"><div class="cost-bar-fill bg-flo" style="width:14%"></div></div><span class="text-xs font-semibold text-ink w-20 text-right num-tabular shrink-0">$200</span></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex items-center gap-2 text-sm mb-2.5 font-medium text-ink"><i data-lucide="clock" class="w-4 h-4 text-muted"></i>Hours spent / week</div>
+              <div class="space-y-1.5">
+                <div class="flex items-center gap-3"><span class="text-[11px] text-muted w-16 shrink-0">Manual</span><div class="cost-bar flex-1"><div class="cost-bar-fill bg-en" style="width:100%"></div></div><span class="text-xs font-semibold text-ink w-20 text-right num-tabular shrink-0">46 hrs</span></div>
+                <div class="flex items-center gap-3"><span class="text-[11px] text-muted w-16 shrink-0">autenflo</span><div class="cost-bar flex-1"><div class="cost-bar-fill bg-flo" style="width:13%"></div></div><span class="text-xs font-semibold text-ink w-20 text-right num-tabular shrink-0">6 hrs</span></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex items-center gap-2 text-sm mb-2.5 font-medium text-ink"><i data-lucide="triangle-alert" class="w-4 h-4 text-muted"></i>Errors / month</div>
+              <div class="space-y-1.5">
+                <div class="flex items-center gap-3"><span class="text-[11px] text-muted w-16 shrink-0">Manual</span><div class="cost-bar flex-1"><div class="cost-bar-fill bg-en" style="width:100%"></div></div><span class="text-xs font-semibold text-ink w-20 text-right num-tabular shrink-0">14</span></div>
+                <div class="flex items-center gap-3"><span class="text-[11px] text-muted w-16 shrink-0">autenflo</span><div class="cost-bar flex-1"><div class="cost-bar-fill bg-flo" style="width:7%"></div></div><span class="text-xs font-semibold text-ink w-20 text-right num-tabular shrink-0">1</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-7 pt-6 border-t border-line flex items-center justify-between">
+            <span class="text-sm text-muted">Annual savings once automated</span>
+            <span class="font-display text-xl font-bold text-flo num-tabular">$15,600</span>
+          </div>
+          <p class="mt-4 text-[11px] text-muted">Illustrative example based on a typical follow-up process. Your real numbers are in the proposal above.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SIX SIDES / DEPARTMENTS (no labels, full storytelling) ================= -->
+<section id="departments" class="py-14 lg:py-20 bg-section border-y border-line overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="max-w-2xl mb-16 reveal">
+      <div class="inline-flex items-center gap-2 rounded-full border border-line bg-white px-3.5 py-1.5 text-sm text-muted mb-5"><i data-lucide="orbit" class="w-3.5 h-3.5 text-en"></i>One engine, six moving parts</div>
+      <h2 class="font-display text-3xl sm:text-4xl font-bold text-ink tracking-tight">Every side of your business, working itself out</h2>
+      <p class="mt-4 text-muted text-lg leading-relaxed">It's an ordinary Tuesday. A lead fills a form, a customer asks a question, an invoice falls due, a new hire starts, and a campaign is due to go out — someone has to make sure none of it slips. autenflo sits at the centre of all six, watching what comes in and quietly deciding what happens next, before anyone has to ask.</p>
+    </div>
+
+    <!-- mobile / tablet grid -->
+    <div class="grid sm:grid-cols-2 gap-5 lg:hidden">
+      <div class="reveal rounded-[20px] bg-white border border-line p-6 card-lift">
+        <div class="w-11 h-11 rounded-xl bg-aut/15 flex items-center justify-center mb-4"><i data-lucide="target" class="w-5 h-5 text-aut"></i></div>
+        <h3 class="font-display text-base font-semibold text-ink mb-1.5">Every opportunity followed up</h3>
+        <p class="text-sm text-muted leading-relaxed">No lead sits unanswered because someone forgot or got busy — the reply goes out the moment it's needed.</p>
+      </div>
+      <div class="reveal rounded-[20px] bg-white border border-line p-6 card-lift" style="transition-delay:.05s">
+        <div class="w-11 h-11 rounded-xl bg-en/15 flex items-center justify-center mb-4"><i data-lucide="megaphone" class="w-5 h-5 text-en"></i></div>
+        <h3 class="font-display text-base font-semibold text-ink mb-1.5">Campaigns that run on schedule</h3>
+        <p class="text-sm text-muted leading-relaxed">Messages go out on time, to the right list, without anyone manually hitting send.</p>
+      </div>
+      <div class="reveal rounded-[20px] bg-white border border-line p-6 card-lift" style="transition-delay:.1s">
+        <div class="w-11 h-11 rounded-xl bg-flo/15 flex items-center justify-center mb-4"><i data-lucide="wallet" class="w-5 h-5 text-flo"></i></div>
+        <h3 class="font-display text-base font-semibold text-ink mb-1.5">Money in and out, tracked</h3>
+        <p class="text-sm text-muted leading-relaxed">Invoices matched and flagged automatically, without a week of manual reconciliation.</p>
+      </div>
+      <div class="reveal rounded-[20px] bg-white border border-line p-6 card-lift" style="transition-delay:.15s">
+        <div class="w-11 h-11 rounded-xl bg-aut/15 flex items-center justify-center mb-4"><i data-lucide="workflow" class="w-5 h-5 text-aut"></i></div>
+        <h3 class="font-display text-base font-semibold text-ink mb-1.5">Handoffs that happen instantly</h3>
+        <p class="text-sm text-muted leading-relaxed">Work moves to the next person the moment it's ready — no one has to chase anyone.</p>
+      </div>
+      <div class="reveal rounded-[20px] bg-white border border-line p-6 card-lift" style="transition-delay:.2s">
+        <div class="w-11 h-11 rounded-xl bg-en/15 flex items-center justify-center mb-4"><i data-lucide="headset" class="w-5 h-5 text-en"></i></div>
+        <h3 class="font-display text-base font-semibold text-ink mb-1.5">Questions answered before they wait</h3>
+        <p class="text-sm text-muted leading-relaxed">Common queries get handled the moment they come in, day or night.</p>
+      </div>
+      <div class="reveal rounded-[20px] bg-white border border-line p-6 card-lift" style="transition-delay:.25s">
+        <div class="w-11 h-11 rounded-xl bg-flo/15 flex items-center justify-center mb-4"><i data-lucide="contact" class="w-5 h-5 text-flo"></i></div>
+        <h3 class="font-display text-base font-semibold text-ink mb-1.5">People onboarded without paperwork</h3>
+        <p class="text-sm text-muted leading-relaxed">Accounts, documents, and welcome steps fire the moment someone joins.</p>
+      </div>
+    </div>
+
+    <!-- desktop orbit -->
+    <div class="hidden lg:block relative mx-auto reveal-scale" style="width:100%; max-width:780px; aspect-ratio:1/1;">
+      <svg class="absolute inset-0 w-full h-full orbit-ring" viewBox="0 0 100 100" style="opacity:.35"><circle cx="50" cy="50" r="42" fill="none" stroke="#78AEEA" stroke-width="0.3" stroke-dasharray="1 2.4"/></svg>
+      <svg class="absolute inset-0 w-full h-full orbit-ring-rev" viewBox="0 0 100 100" style="opacity:.25"><circle cx="50" cy="50" r="34" fill="none" stroke="#B49BEA" stroke-width="0.3" stroke-dasharray="1 2.4"/></svg>
+
+      <svg class="absolute inset-0 w-full h-full" viewBox="0 0 100 100">
+        <path d="M50 8 L50 50" fill="none" stroke="#E6EAF0" stroke-width="0.6"/>
+        <path d="M86.4 29 L50 50" fill="none" stroke="#E6EAF0" stroke-width="0.6"/>
+        <path d="M86.4 71 L50 50" fill="none" stroke="#E6EAF0" stroke-width="0.6"/>
+        <path d="M50 92 L50 50" fill="none" stroke="#E6EAF0" stroke-width="0.6"/>
+        <path d="M13.6 71 L50 50" fill="none" stroke="#E6EAF0" stroke-width="0.6"/>
+        <path d="M13.6 29 L50 50" fill="none" stroke="#E6EAF0" stroke-width="0.6"/>
+        <circle r="1" fill="#78AEEA"><animateMotion dur="2.6s" repeatCount="indefinite" path="M50 8 L50 50"/></circle>
+        <circle r="1" fill="#B49BEA"><animateMotion dur="2.9s" begin="0.3s" repeatCount="indefinite" path="M86.4 29 L50 50"/></circle>
+        <circle r="1" fill="#72C5AF"><animateMotion dur="2.7s" begin="0.6s" repeatCount="indefinite" path="M86.4 71 L50 50"/></circle>
+        <circle r="1" fill="#78AEEA"><animateMotion dur="3.1s" begin="0.9s" repeatCount="indefinite" path="M50 92 L50 50"/></circle>
+        <circle r="1" fill="#B49BEA"><animateMotion dur="2.8s" begin="1.2s" repeatCount="indefinite" path="M13.6 71 L50 50"/></circle>
+        <circle r="1" fill="#72C5AF"><animateMotion dur="3s" begin="1.5s" repeatCount="indefinite" path="M13.6 29 L50 50"/></circle>
+      </svg>
+
+      <div class="orbit-node glow-pulse rounded-full bg-white border border-line flex flex-col items-center justify-center text-center" style="left:50%; top:50%; width:120px; height:120px;">
+        <i data-lucide="sparkles" class="w-4 h-4 text-en mb-1"></i>
+        <span class="font-display text-sm font-bold text-ink">autenflo</span>
+        <span id="engineWord" class="text-[11px] text-muted mt-0.5 fade-swap">is reading</span>
+      </div>
+
+      <div class="orbit-node group" style="left:50%; top:8%;">
+        <div class="w-16 h-16 rounded-2xl bg-white border border-line flex items-center justify-center shadow-sm hover:shadow-md transition cursor-default"><i data-lucide="target" class="w-6 h-6 text-aut"></i></div>
+        <p class="text-[11px] font-semibold text-ink/70 text-center mt-2 w-24 -ml-4">Never missed</p>
+        <div class="absolute left-1/2 top-full -translate-x-1/2 mt-1 w-48 text-center opacity-0 group-hover:opacity-100 transition pointer-events-none"><p class="text-xs font-medium text-ink bg-white border border-line rounded-lg px-2.5 py-1.5 shadow-sm">Every opportunity followed up, every time</p></div>
+      </div>
+
+      <div class="orbit-node group" style="left:86.4%; top:29%;">
+        <div class="w-16 h-16 rounded-2xl bg-white border border-line flex items-center justify-center shadow-sm hover:shadow-md transition cursor-default"><i data-lucide="megaphone" class="w-6 h-6 text-en"></i></div>
+        <p class="text-[11px] font-semibold text-ink/70 text-center mt-2 w-24 -ml-4">Always on time</p>
+        <div class="absolute left-1/2 top-full -translate-x-1/2 mt-1 w-48 text-center opacity-0 group-hover:opacity-100 transition pointer-events-none"><p class="text-xs font-medium text-ink bg-white border border-line rounded-lg px-2.5 py-1.5 shadow-sm">Campaigns that send themselves, on schedule</p></div>
+      </div>
+
+      <div class="orbit-node group" style="left:86.4%; top:71%;">
+        <div class="w-16 h-16 rounded-2xl bg-white border border-line flex items-center justify-center shadow-sm hover:shadow-md transition cursor-default"><i data-lucide="wallet" class="w-6 h-6 text-flo"></i></div>
+        <p class="text-[11px] font-semibold text-ink/70 text-center mt-2 w-24 -ml-4">Books that close</p>
+        <div class="absolute left-1/2 top-full -translate-x-1/2 mt-1 w-48 text-center opacity-0 group-hover:opacity-100 transition pointer-events-none"><p class="text-xs font-medium text-ink bg-white border border-line rounded-lg px-2.5 py-1.5 shadow-sm">Money tracked without spreadsheets</p></div>
+      </div>
+
+      <div class="orbit-node group" style="left:50%; top:92%;">
+        <div class="w-16 h-16 rounded-2xl bg-white border border-line flex items-center justify-center shadow-sm hover:shadow-md transition cursor-default"><i data-lucide="workflow" class="w-6 h-6 text-aut"></i></div>
+        <p class="text-[11px] font-semibold text-ink/70 text-center mt-2 w-24 -ml-4">No chasing</p>
+        <div class="absolute left-1/2 bottom-full -translate-x-1/2 mb-1 w-48 text-center opacity-0 group-hover:opacity-100 transition pointer-events-none"><p class="text-xs font-medium text-ink bg-white border border-line rounded-lg px-2.5 py-1.5 shadow-sm">Handoffs that happen instantly, no chasing</p></div>
+      </div>
+
+      <div class="orbit-node group" style="left:13.6%; top:71%;">
+        <div class="w-16 h-16 rounded-2xl bg-white border border-line flex items-center justify-center shadow-sm hover:shadow-md transition cursor-default"><i data-lucide="headset" class="w-6 h-6 text-en"></i></div>
+        <p class="text-[11px] font-semibold text-ink/70 text-center mt-2 w-24 -ml-4">Instant replies</p>
+        <div class="absolute left-1/2 top-full -translate-x-1/2 mt-1 w-48 text-center opacity-0 group-hover:opacity-100 transition pointer-events-none"><p class="text-xs font-medium text-ink bg-white border border-line rounded-lg px-2.5 py-1.5 shadow-sm">Questions answered before they become complaints</p></div>
+      </div>
+
+      <div class="orbit-node group" style="left:13.6%; top:29%;">
+        <div class="w-16 h-16 rounded-2xl bg-white border border-line flex items-center justify-center shadow-sm hover:shadow-md transition cursor-default"><i data-lucide="contact" class="w-6 h-6 text-flo"></i></div>
+        <p class="text-[11px] font-semibold text-ink/70 text-center mt-2 w-24 -ml-4">Zero paperwork</p>
+        <div class="absolute left-1/2 bottom-full -translate-x-1/2 mb-1 w-48 text-center opacity-0 group-hover:opacity-100 transition pointer-events-none"><p class="text-xs font-medium text-ink bg-white border border-line rounded-lg px-2.5 py-1.5 shadow-sm">People onboarded &amp; supported, paperwork-free</p></div>
+      </div>
+    </div>
+    <p class="hidden lg:block text-center text-sm text-muted mt-16 reveal">Hover a node to see what it takes off your plate.</p>
+
+    <!-- A day inside autenflo — story timeline -->
+    <div class="mt-20 lg:mt-24 reveal">
+      <h3 class="font-display text-xl sm:text-2xl font-semibold text-ink text-center mb-2">A day inside autenflo</h3>
+      <p class="text-center text-muted text-sm mb-12 max-w-md mx-auto">Same business, same working hours — just nothing falls through the cracks anymore.</p>
+
+      <div class="relative overflow-x-auto pb-2 -mx-6 px-6 lg:mx-0 lg:px-0">
+        <div class="relative flex gap-8 min-w-[880px] lg:min-w-0 lg:grid lg:grid-cols-6 lg:gap-4">
+          <div class="story-line absolute left-0 right-0 top-6"></div>
+
+          <div class="relative flex flex-col items-center text-center w-[130px] lg:w-auto shrink-0">
+            <div class="w-12 h-12 rounded-full bg-white border-2 border-aut flex items-center justify-center z-10 mb-3"><i data-lucide="target" class="w-5 h-5 text-aut"></i></div>
+            <p class="text-xs font-semibold text-ink/60 mb-1">9:02 AM</p>
+            <p class="text-sm text-ink leading-snug">A lead fills your contact form</p>
+          </div>
+          <div class="relative flex flex-col items-center text-center w-[130px] lg:w-auto shrink-0">
+            <div class="w-12 h-12 rounded-full bg-white border-2 border-en flex items-center justify-center z-10 mb-3"><i data-lucide="megaphone" class="w-5 h-5 text-en"></i></div>
+            <p class="text-xs font-semibold text-ink/60 mb-1">9:03 AM</p>
+            <p class="text-sm text-ink leading-snug">They're added to the right follow-up sequence</p>
+          </div>
+          <div class="relative flex flex-col items-center text-center w-[130px] lg:w-auto shrink-0">
+            <div class="w-12 h-12 rounded-full bg-white border-2 border-flo flex items-center justify-center z-10 mb-3"><i data-lucide="wallet" class="w-5 h-5 text-flo"></i></div>
+            <p class="text-xs font-semibold text-ink/60 mb-1">11:40 AM</p>
+            <p class="text-sm text-ink leading-snug">An invoice goes out the moment the deal closes</p>
+          </div>
+          <div class="relative flex flex-col items-center text-center w-[130px] lg:w-auto shrink-0">
+            <div class="w-12 h-12 rounded-full bg-white border-2 border-aut flex items-center justify-center z-10 mb-3"><i data-lucide="workflow" class="w-5 h-5 text-aut"></i></div>
+            <p class="text-xs font-semibold text-ink/60 mb-1">1:15 PM</p>
+            <p class="text-sm text-ink leading-snug">Approval moves to finance, no one pinging anyone</p>
+          </div>
+          <div class="relative flex flex-col items-center text-center w-[130px] lg:w-auto shrink-0">
+            <div class="w-12 h-12 rounded-full bg-white border-2 border-en flex items-center justify-center z-10 mb-3"><i data-lucide="headset" class="w-5 h-5 text-en"></i></div>
+            <p class="text-xs font-semibold text-ink/60 mb-1">3:30 PM</p>
+            <p class="text-sm text-ink leading-snug">A support question is answered before it's assigned</p>
+          </div>
+          <div class="relative flex flex-col items-center text-center w-[130px] lg:w-auto shrink-0">
+            <div class="w-12 h-12 rounded-full bg-white border-2 border-flo flex items-center justify-center z-10 mb-3"><i data-lucide="contact" class="w-5 h-5 text-flo"></i></div>
+            <p class="text-xs font-semibold text-ink/60 mb-1">5:00 PM</p>
+            <p class="text-sm text-ink leading-snug">A new hire's paperwork is ready for tomorrow</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STORY 2: NOT OFF-THE-SHELF ================= -->
+<section id="story-bespoke" class="relative py-14 lg:py-20 overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="max-w-2xl mb-16 reveal">
+      <div class="inline-flex items-center gap-2 rounded-full border border-line bg-white px-3.5 py-1.5 text-sm text-muted mb-5"><i data-lucide="fingerprint" class="w-3.5 h-3.5 text-en"></i>The second shift</div>
+      <h2 class="font-display text-3xl sm:text-4xl font-bold text-ink tracking-tight">No two autenflo systems look the same</h2>
+      <p class="mt-4 text-muted text-lg leading-relaxed">We don't sell a template with your logo on it. Every build starts from your actual bottleneck, your actual tools, and your actual workflow — so what we hand over exists nowhere else.</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+
+      <div class="blueprint-card reveal rounded-[20px] bg-white border border-line p-6 overflow-hidden">
+        <div class="flex items-center gap-2.5 mb-5">
+          <div class="client-logo-mark bg-gradient-to-br from-aut to-en">01</div>
+          <span class="font-display text-sm font-bold text-ink tracking-tight">Client blueprint</span>
+        </div>
+        <div class="h-36 rounded-xl bg-section border border-line relative overflow-hidden mb-5">
+          <div class="absolute inset-0 grid-mesh opacity-70"></div>
+          <svg viewBox="0 0 220 130" class="absolute inset-0 w-full h-full">
+            <path class="blueprint-path" d="M20 30 L80 30 L80 70 L140 70 L140 30 L200 30" fill="none" stroke="#78AEEA" stroke-width="2"/>
+            <path class="blueprint-path" d="M20 100 L100 100 L100 70" fill="none" stroke="#B49BEA" stroke-width="2" style="transition-delay:.15s"/>
+            <circle cx="20" cy="30" r="5" fill="#78AEEA"/><circle cx="80" cy="30" r="5" fill="#78AEEA"/><circle cx="140" cy="70" r="5" fill="#B49BEA"/><circle cx="200" cy="30" r="5" fill="#72C5AF"/><circle cx="20" cy="100" r="5" fill="#B49BEA"/>
+          </svg>
+        </div>
+        <p class="text-xs font-semibold text-muted uppercase tracking-wide mb-2">D2C skincare — lead &amp; follow-up</p>
+        <p class="text-sm text-ink leading-relaxed">Instagram DM → WhatsApp reply → CRM tag → follow-up sequence, tuned to their exact product catalogue.</p>
+      </div>
+
+      <div class="blueprint-card reveal rounded-[20px] bg-white border border-line p-6 overflow-hidden" style="transition-delay:.08s">
+        <div class="flex items-center gap-2.5 mb-5">
+          <div class="client-logo-mark bg-gradient-to-br from-en to-flo">02</div>
+          <span class="font-display text-sm font-bold text-ink tracking-tight">Client blueprint</span>
+        </div>
+        <div class="h-36 rounded-xl bg-section border border-line relative overflow-hidden mb-5">
+          <div class="absolute inset-0 grid-mesh opacity-70"></div>
+          <svg viewBox="0 0 220 130" class="absolute inset-0 w-full h-full">
+            <path class="blueprint-path" d="M110 15 L110 55 L60 55 L60 95" fill="none" stroke="#B49BEA" stroke-width="2"/>
+            <path class="blueprint-path" d="M110 55 L160 55 L160 95" fill="none" stroke="#72C5AF" stroke-width="2" style="transition-delay:.15s"/>
+            <path class="blueprint-path" d="M110 55 L110 115" fill="none" stroke="#78AEEA" stroke-width="2" style="transition-delay:.3s"/>
+            <circle cx="110" cy="15" r="5" fill="#B49BEA"/><circle cx="60" cy="95" r="5" fill="#B49BEA"/><circle cx="160" cy="95" r="5" fill="#72C5AF"/><circle cx="110" cy="115" r="5" fill="#78AEEA"/>
+          </svg>
+        </div>
+        <p class="text-xs font-semibold text-muted uppercase tracking-wide mb-2">Remote startup — ops backlog</p>
+        <p class="text-sm text-ink leading-relaxed">One trigger branches into document generation, Slack routing, and payroll updates — matched to how their team is actually structured.</p>
+      </div>
+
+      <div class="blueprint-card reveal rounded-[20px] bg-white border border-line p-6 overflow-hidden" style="transition-delay:.16s">
+        <div class="flex items-center gap-2.5 mb-5">
+          <div class="client-logo-mark bg-gradient-to-br from-flo to-aut">03</div>
+          <span class="font-display text-sm font-bold text-ink tracking-tight">Client blueprint</span>
+        </div>
+        <div class="h-36 rounded-xl bg-section border border-line relative overflow-hidden mb-5">
+          <div class="absolute inset-0 grid-mesh opacity-70"></div>
+          <svg viewBox="0 0 220 130" class="absolute inset-0 w-full h-full">
+            <path class="blueprint-path" d="M110 65 m-40 0 a40 40 0 1 0 80 0 a40 40 0 1 0 -80 0" fill="none" stroke="#72C5AF" stroke-width="2"/>
+            <path class="blueprint-path" d="M110 25 L110 5 M150 65 L172 65 M110 105 L110 125 M70 65 L48 65" fill="none" stroke="#78AEEA" stroke-width="2" style="transition-delay:.15s"/>
+            <circle cx="110" cy="25" r="5" fill="#78AEEA"/><circle cx="150" cy="65" r="5" fill="#B49BEA"/><circle cx="110" cy="105" r="5" fill="#72C5AF"/><circle cx="70" cy="65" r="5" fill="#78AEEA"/>
+          </svg>
+        </div>
+        <p class="text-xs font-semibold text-muted uppercase tracking-wide mb-2">Services firm — monthly close</p>
+        <p class="text-sm text-ink leading-relaxed">Invoices loop through matching, reconciliation, and approval until the books close — built around their exact chart of accounts.</p>
+      </div>
+
+    </div>
+
+    <p class="text-center text-sm text-muted mt-12 reveal">Your bottleneck won't look like any of these. That's the point — yours gets mapped from scratch.</p>
+  </div>
+</section>
+
+<!-- ================= ROI CALCULATOR ================= -->
+<section id="roi" class="py-14 lg:py-20">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-2 gap-14 items-center">
+
+    <div class="reveal">
+      <div class="inline-flex items-center gap-2 rounded-full border border-line bg-white px-3.5 py-1.5 text-sm text-muted mb-5"><i data-lucide="calculator" class="w-3.5 h-3.5 text-flo"></i>Know your numbers</div>
+      <h2 class="font-display text-3xl sm:text-4xl font-bold text-ink tracking-tight">See what manual work is really costing you</h2>
+      <p class="mt-4 text-muted text-lg leading-relaxed max-w-md">Move the sliders to match your team and watch the yearly cost update.</p>
+
+      <div class="mt-10 space-y-8 max-w-md">
+        <div>
+          <div class="flex justify-between text-sm mb-2.5 gap-4"><span class="font-medium text-ink flex items-center gap-2"><i data-lucide="users-round" class="w-4 h-4 text-muted"></i>Team members doing manual work</span><span id="roiTeamVal" class="font-display font-semibold text-ink num-tabular shrink-0">6</span></div>
+          <input id="roiTeam" type="range" min="1" max="40" value="6" class="range-flo w-full appearance-none bg-transparent">
+        </div>
+        <div>
+          <div class="flex justify-between text-sm mb-2.5 gap-4"><span class="font-medium text-ink flex items-center gap-2"><i data-lucide="clock" class="w-4 h-4 text-muted"></i>Hours per week on repetitive tasks</span><span id="roiHoursVal" class="font-display font-semibold text-ink num-tabular shrink-0">8</span></div>
+          <input id="roiHours" type="range" min="1" max="30" value="8" class="range-flo w-full appearance-none bg-transparent">
+        </div>
+        <div>
+          <div class="flex justify-between text-sm mb-2.5 gap-4"><span class="font-medium text-ink flex items-center gap-2"><i data-lucide="dollar-sign" class="w-4 h-4 text-muted"></i>Average hourly cost</span><span id="roiRateVal" class="font-display font-semibold text-ink num-tabular shrink-0">$25</span></div>
+          <input id="roiRate" type="range" min="10" max="150" step="5" value="25" class="range-flo w-full appearance-none bg-transparent">
+        </div>
+      </div>
+    </div>
+
+    <div class="glow-border reveal" style="transition-delay:.1s">
+      <div class="rounded-[20px] bg-white border border-line p-7 sm:p-8">
+        <p class="text-sm text-muted mb-1">Estimated cost of manual work today</p>
+        <p class="font-display text-4xl sm:text-5xl font-bold text-ink num-tabular break-words"><span id="roiYearly">$62,400</span><span class="text-lg text-muted font-body font-medium">/yr</span></p>
+
+        <div class="mt-8 grid grid-cols-2 gap-4">
+          <div class="rounded-2xl bg-section border border-line p-5">
+            <div class="flex items-center gap-2 text-aut mb-2"><i data-lucide="clock" class="w-4 h-4"></i><span class="text-xs font-semibold uppercase tracking-wide">Hours / year</span></div>
+            <p class="font-display text-xl sm:text-2xl font-bold text-ink num-tabular" id="roiHoursYear">2,496</p>
+          </div>
+          <div class="rounded-2xl bg-section border border-line p-5">
+            <div class="flex items-center gap-2 text-flo mb-2"><i data-lucide="trending-down" class="w-4 h-4"></i><span class="text-xs font-semibold uppercase tracking-wide">If 80% automated</span></div>
+            <p class="font-display text-xl sm:text-2xl font-bold text-ink num-tabular break-words" id="roiSaved">$49,920</p>
+          </div>
+        </div>
+
+        <button type="button" data-open-booking class="mt-8 w-full inline-flex items-center justify-center gap-2 rounded-full bg-flo px-6 py-3.5 text-[15px] font-semibold text-white hover:brightness-95 transition cursor-hover">
+          Get this back
+          <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+        </button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= SHOWCASE / TESTIMONIALS ================= -->
+<section id="showcase" class="py-14 lg:py-20 bg-section border-y border-line">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="max-w-xl mb-14 reveal">
+      <div class="inline-flex items-center gap-2 rounded-full border border-line bg-white px-3.5 py-1.5 text-sm text-muted mb-5"><i data-lucide="star" class="w-3.5 h-3.5 text-en"></i>Real results</div>
+      <h2 class="font-display text-3xl sm:text-4xl font-bold text-ink tracking-tight">Teams who handed off the busywork</h2>
+      <p class="mt-4 text-muted text-lg leading-relaxed">A few of the systems we've installed, in their words.</p>
+    </div>
+
+    <div class="grid lg:grid-cols-3 gap-6">
+
+      <div class="reveal rounded-[20px] bg-white border border-line p-7 card-lift flex flex-col">
+        <span class="inline-block text-xs font-semibold text-aut bg-aut/10 rounded-full px-3 py-1 mb-5 self-start">Leads &amp; follow-up</span>
+        <p class="text-ink leading-relaxed mb-6 flex-1">"We stopped losing leads between the form fill and the first reply. It just happens now."</p>
+        <div class="flex items-center gap-3 mb-6">
+          <img src="https://i.pravatar.cc/100?img=47" alt="Ananya Rao" class="w-10 h-10 rounded-full object-cover shrink-0 border border-line">
+          <div class="text-sm"><p class="font-semibold text-ink">Ananya Rao</p><p class="text-muted text-xs">Founder, D2C skincare brand</p></div>
+        </div>
+        <div class="pt-5 border-t border-line flex items-end gap-2"><p class="font-display text-3xl font-bold text-ink">11 min</p><p class="text-xs text-muted mb-1">avg. response, down from 2 days</p></div>
+      </div>
+
+      <div class="reveal rounded-[20px] bg-white border border-line p-7 card-lift flex flex-col" style="transition-delay:.08s">
+        <span class="inline-block text-xs font-semibold text-en bg-en/10 rounded-full px-3 py-1 mb-5 self-start">Operations</span>
+        <p class="text-ink leading-relaxed mb-6 flex-1">"Our ops backlog used to pile up every single Monday. Now the queue clears itself before anyone's even logged in."</p>
+        <div class="flex items-center gap-3 mb-6">
+          <img src="https://i.pravatar.cc/100?img=13" alt="Rohit Malhotra" class="w-10 h-10 rounded-full object-cover shrink-0 border border-line">
+          <div class="text-sm"><p class="font-semibold text-ink">Rohit Malhotra</p><p class="text-muted text-xs">Ops lead, remote-first startup</p></div>
+        </div>
+        <div class="pt-5 border-t border-line flex items-end gap-2"><p class="font-display text-3xl font-bold text-ink">22 hrs</p><p class="text-xs text-muted mb-1">of ops backlog cleared, every week</p></div>
+      </div>
+
+      <div class="reveal rounded-[20px] bg-white border border-line p-7 card-lift flex flex-col" style="transition-delay:.16s">
+        <span class="inline-block text-xs font-semibold text-flo bg-flo/10 rounded-full px-3 py-1 mb-5 self-start">Finance &amp; ops</span>
+        <p class="text-ink leading-relaxed mb-6 flex-1">"Our monthly close used to eat a full week of chasing receipts. Now it mostly runs itself."</p>
+        <div class="flex items-center gap-3 mb-6">
+          <img src="https://i.pravatar.cc/100?img=32" alt="Priya Menon" class="w-10 h-10 rounded-full object-cover shrink-0 border border-line">
+          <div class="text-sm"><p class="font-semibold text-ink">Priya Menon</p><p class="text-muted text-xs">Finance manager, services firm</p></div>
+        </div>
+        <div class="pt-5 border-t border-line flex items-end gap-2"><p class="font-display text-3xl font-bold text-ink">4 days</p><p class="text-xs text-muted mb-1">faster monthly close</p></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= BOOKING / CONTACT ================= -->
+<section id="contact" class="py-14 lg:py-20">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-2 gap-14 items-start">
+
+    <div class="reveal">
+      <div class="inline-flex items-center gap-2 rounded-full border border-line bg-white px-3.5 py-1.5 text-sm text-muted mb-5"><i data-lucide="calendar-check" class="w-3.5 h-3.5 text-flo"></i>Let's talk</div>
+      <h2 class="font-display text-3xl sm:text-4xl font-bold text-ink tracking-tight">Tell us what's slowing your team down</h2>
+      <p class="mt-4 text-muted text-lg leading-relaxed max-w-md">Prefer to book directly? Use the button in the header. Or send us the details here and we'll reach out.</p>
+
+      <ul class="mt-10 space-y-5 max-w-md">
+        <li class="flex gap-3"><i data-lucide="circle-check-big" class="w-5 h-5 text-flo shrink-0 mt-0.5"></i><span class="text-ink/90">15 minutes, no pressure, no pitch deck</span></li>
+        <li class="flex gap-3"><i data-lucide="circle-check-big" class="w-5 h-5 text-flo shrink-0 mt-0.5"></i><span class="text-ink/90">You'll leave with at least one workflow mapped out</span></li>
+        <li class="flex gap-3"><i data-lucide="circle-check-big" class="w-5 h-5 text-flo shrink-0 mt-0.5"></i><span class="text-ink/90">No commitment to build anything</span></li>
+      </ul>
+
+      <svg class="mt-10 w-24 h-24 float-a opacity-90" viewBox="0 0 100 100" aria-hidden="true">
+        <rect x="12" y="18" width="76" height="66" rx="12" fill="#FFFFFF" stroke="#E6EAF0" stroke-width="2"/>
+        <rect x="12" y="18" width="76" height="20" rx="10" fill="#78AEEA" opacity="0.15"/>
+        <line x1="30" y1="10" x2="30" y2="26" stroke="#78AEEA" stroke-width="4" stroke-linecap="round"/>
+        <line x1="70" y1="10" x2="70" y2="26" stroke="#B49BEA" stroke-width="4" stroke-linecap="round"/>
+        <circle cx="50" cy="60" r="16" fill="#72C5AF" opacity="0.15"/>
+        <path d="M42 60 L48 66 L60 52" fill="none" stroke="#72C5AF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+
+      <div class="mt-6 flex items-center gap-3 text-sm text-muted">
+        <i data-lucide="map-pin" class="w-4 h-4"></i>
+        <span>Remote-first · working with teams across time zones, worldwide</span>
+      </div>
+    </div>
+
+    <div class="glow-border reveal" style="transition-delay:.1s">
+      <div class="rounded-[20px] bg-white border border-line p-6 sm:p-8">
+        <form id="bookingForm" class="space-y-5">
+          <div>
+            <label for="bName" class="block text-sm font-medium text-ink mb-1.5">Name</label>
+            <input id="bName" name="name" type="text" required class="w-full rounded-xl border border-line bg-section px-4 py-3 text-[15px] focus:bg-white focus:border-aut transition" placeholder="Jordan Blake">
+          </div>
+          <div>
+            <label for="bEmail" class="block text-sm font-medium text-ink mb-1.5">Email</label>
+            <input id="bEmail" name="email" type="email" required class="w-full rounded-xl border border-line bg-section px-4 py-3 text-[15px] focus:bg-white focus:border-aut transition" placeholder="jordan@company.com">
+          </div>
+          <div>
+            <label for="bNeed" class="block text-sm font-medium text-ink mb-1.5">What needs automating?</label>
+            <textarea id="bNeed" name="need" rows="3" required class="w-full resize-none rounded-xl border border-line bg-section px-4 py-3 text-[15px] focus:bg-white focus:border-aut transition" placeholder="A quick sentence on the process that's eating the most time"></textarea>
+          </div>
+          <div>
+            <label for="bWhen" class="block text-sm font-medium text-ink mb-1.5">Preferred date &amp; time</label>
+            <input id="bWhen" name="when" type="datetime-local" required class="w-full rounded-xl border border-line bg-section px-4 py-3 text-[15px] focus:bg-white focus:border-aut transition">
+          </div>
+
+          <button type="submit" id="bookingSubmit" class="w-full inline-flex items-center justify-center gap-2 rounded-full bg-ink px-6 py-3.5 text-[15px] font-semibold text-white hover:bg-ink/90 transition disabled:opacity-60">
+            <span id="bookingBtnLabel">Request this time</span>
+            <i data-lucide="send" class="w-4 h-4"></i>
+          </button>
+
+          <div id="bookingFeedback" class="hidden text-sm rounded-xl px-4 py-3 border"></div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section id="faq" class="py-14 lg:py-20 bg-section border-y border-line">
+  <div class="max-w-3xl mx-auto px-6 lg:px-10">
+    <div class="text-center mb-14 reveal">
+      <div class="inline-flex items-center gap-2 rounded-full border border-line bg-white px-3.5 py-1.5 text-sm text-muted mb-5"><i data-lucide="circle-help" class="w-3.5 h-3.5 text-en"></i>Frequently asked</div>
+      <h2 class="font-display text-3xl sm:text-4xl font-bold text-ink tracking-tight">Questions people ask before saying yes</h2>
+      <p class="mt-4 text-muted text-lg leading-relaxed">If yours isn't here, ask us directly on the call — no charge, no pressure.</p>
+    </div>
+
+    <div class="space-y-4 reveal">
+      <div class="faq-item rounded-2xl bg-white border border-line px-6 py-5">
+        <button type="button" class="faq-toggle w-full flex items-center justify-between gap-4 text-left cursor-pointer">
+          <span class="font-display text-base sm:text-lg font-semibold text-ink">Do you only build automations, or help with strategy too?</span>
+          <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-section flex items-center justify-center transition-transform duration-300"><i data-lucide="plus" class="w-4 h-4 text-ink"></i></span>
+        </button>
+        <div class="faq-panel hidden">
+          <p class="mt-3 text-sm sm:text-[15px] text-muted leading-relaxed pr-10">Both. Most engagements start with a business or technology consulting conversation — what's actually worth fixing, and in what order — before any automation gets built. For a lot of clients the process optimization work is the whole engagement; for others it's the first step toward a bigger transformation.</p>
+        </div>
+      </div>
+
+      <div class="faq-item rounded-2xl bg-white border border-line px-6 py-5">
+        <button type="button" class="faq-toggle w-full flex items-center justify-between gap-4 text-left cursor-pointer">
+          <span class="font-display text-base sm:text-lg font-semibold text-ink">How is this different from hiring a VA or an intern?</span>
+          <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-section flex items-center justify-center transition-transform duration-300"><i data-lucide="plus" class="w-4 h-4 text-ink"></i></span>
+        </button>
+        <div class="faq-panel hidden">
+          <p class="mt-3 text-sm sm:text-[15px] text-muted leading-relaxed pr-10">A person needs sleep, sick days, and training. What we build runs at 2 AM the same way it runs at 2 PM, doesn't forget a step, and doesn't need to be re-trained every time someone leaves.</p>
+        </div>
+      </div>
+
+      <div class="faq-item rounded-2xl bg-white border border-line px-6 py-5">
+        <button type="button" class="faq-toggle w-full flex items-center justify-between gap-4 text-left cursor-pointer">
+          <span class="font-display text-base sm:text-lg font-semibold text-ink">Do I need to be technical, or set anything up myself?</span>
+          <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-section flex items-center justify-center transition-transform duration-300"><i data-lucide="plus" class="w-4 h-4 text-ink"></i></span>
+        </button>
+        <div class="faq-panel hidden">
+          <p class="mt-3 text-sm sm:text-[15px] text-muted leading-relaxed pr-10">No. We map your process on the call, build and test the automation ourselves, and hand you something that just runs. You tell us what's slow — we handle every technical piece behind it.</p>
+        </div>
+      </div>
+
+      <div class="faq-item rounded-2xl bg-white border border-line px-6 py-5">
+        <button type="button" class="faq-toggle w-full flex items-center justify-between gap-4 text-left cursor-pointer">
+          <span class="font-display text-base sm:text-lg font-semibold text-ink">How long does it actually take to go live?</span>
+          <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-section flex items-center justify-center transition-transform duration-300"><i data-lucide="plus" class="w-4 h-4 text-ink"></i></span>
+        </button>
+        <div class="faq-panel hidden">
+          <p class="mt-3 text-sm sm:text-[15px] text-muted leading-relaxed pr-10">Most first workflows are live in 2–4 weeks, depending on how many tools and steps are involved. You'll see a working version well before that, and nothing goes live without you approving it first.</p>
+        </div>
+      </div>
+
+      <div class="faq-item rounded-2xl bg-white border border-line px-6 py-5">
+        <button type="button" class="faq-toggle w-full flex items-center justify-between gap-4 text-left cursor-pointer">
+          <span class="font-display text-base sm:text-lg font-semibold text-ink">What happens if the automation gets something wrong?</span>
+          <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-section flex items-center justify-center transition-transform duration-300"><i data-lucide="plus" class="w-4 h-4 text-ink"></i></span>
+        </button>
+        <div class="faq-panel hidden">
+          <p class="mt-3 text-sm sm:text-[15px] text-muted leading-relaxed pr-10">Anything customer-facing or high-stakes is built with checkpoints, so it flags uncertain cases to a person instead of guessing. We also monitor what we build after launch, so issues get caught early, not weeks later.</p>
+        </div>
+      </div>
+
+      <div class="faq-item rounded-2xl bg-white border border-line px-6 py-5">
+        <button type="button" class="faq-toggle w-full flex items-center justify-between gap-4 text-left cursor-pointer">
+          <span class="font-display text-base sm:text-lg font-semibold text-ink">Is our business data safe with an outside team building this?</span>
+          <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-section flex items-center justify-center transition-transform duration-300"><i data-lucide="plus" class="w-4 h-4 text-ink"></i></span>
+        </button>
+        <div class="faq-panel hidden">
+          <p class="mt-3 text-sm sm:text-[15px] text-muted leading-relaxed pr-10">Yes. Your data stays inside your own tools and accounts wherever possible, connections are encrypted, and we never sell or share what passes through the systems we build.</p>
+        </div>
+      </div>
+
+      <div class="faq-item rounded-2xl bg-white border border-line px-6 py-5">
+        <button type="button" class="faq-toggle w-full flex items-center justify-between gap-4 text-left cursor-pointer">
+          <span class="font-display text-base sm:text-lg font-semibold text-ink">Our process is a bit messy and non-standard — does that matter?</span>
+          <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-section flex items-center justify-center transition-transform duration-300"><i data-lucide="plus" class="w-4 h-4 text-ink"></i></span>
+        </button>
+        <div class="faq-panel hidden">
+          <p class="mt-3 text-sm sm:text-[15px] text-muted leading-relaxed pr-10">That's the usual starting point, not an exception. We build around how your team actually works today, not a textbook version of it — the messier the current process, the more time you tend to get back.</p>
+        </div>
+      </div>
+
+      <div class="faq-item rounded-2xl bg-white border border-line px-6 py-5">
+        <button type="button" class="faq-toggle w-full flex items-center justify-between gap-4 text-left cursor-pointer">
+          <span class="font-display text-base sm:text-lg font-semibold text-ink">What does this cost?</span>
+          <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-section flex items-center justify-center transition-transform duration-300"><i data-lucide="plus" class="w-4 h-4 text-ink"></i></span>
+        </button>
+        <div class="faq-panel hidden">
+          <p class="mt-3 text-sm sm:text-[15px] text-muted leading-relaxed pr-10">It depends on what we're automating and how many workflows are involved, so we scope it on the call once we understand your process. Use the ROI calculator above for a rough sense of what manual work is costing you today.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="pt-16 pb-10 bg-white border-t border-line">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="flex flex-col items-center text-center">
+      <img src="logo.png" alt="autenflo" class="h-11 w-auto mb-6" />
+      <p class="text-muted max-w-sm mb-10">Business, technology &amp; AI consulting for growing companies worldwide who'd rather build than do busywork.</p>
+    </div>
+
+    <!-- trust badges -->
+    <div class="flex flex-wrap items-center justify-center gap-x-10 gap-y-6 pb-10 mb-10 border-b border-line">
+      <div class="flex items-center gap-2.5 text-sm text-ink/80"><i data-lucide="shield-check" class="w-4.5 h-4.5 text-flo shrink-0"></i>Data encrypted, never sold</div>
+      <div class="flex items-center gap-2.5 text-sm text-ink/80"><i data-lucide="headset" class="w-4.5 h-4.5 text-aut shrink-0"></i>Real humans behind every build</div>
+      <div class="flex items-center gap-2.5 text-sm text-ink/80"><i data-lucide="globe" class="w-4.5 h-4.5 text-en shrink-0"></i>Remote-first, serving clients worldwide</div>
+      <div class="flex items-center gap-2.5 text-sm text-ink/80"><i data-lucide="rotate-ccw" class="w-4.5 h-4.5 text-flo shrink-0"></i>No lock-in, cancel anytime</div>
+      <div class="flex items-center gap-2.5 text-sm text-ink/80"><i data-lucide="users" class="w-4.5 h-4.5 text-aut shrink-0"></i>40+ businesses automated</div>
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 gap-8 text-sm">
+      <div>
+        <p class="font-semibold text-ink mb-3 flex items-center gap-2"><i data-lucide="building-2" class="w-4 h-4 text-muted"></i>Company</p>
+        <ul class="space-y-2.5 text-muted">
+          <li><a href="#services" class="hover:text-ink transition-colors">Services</a></li>
+          <li><a href="#showcase" class="hover:text-ink transition-colors">Results</a></li>
+          <li><a href="#how-it-works" class="hover:text-ink transition-colors">How it works</a></li>
+          <li><a href="#faq" class="hover:text-ink transition-colors">FAQ</a></li>
+          <li><button type="button" data-open-booking class="hover:text-ink transition-colors cursor-hover">Book a call</button></li>
+        </ul>
+      </div>
+      <div>
+        <p class="font-semibold text-ink mb-3 flex items-center gap-2"><i data-lucide="book-open" class="w-4 h-4 text-muted"></i>Resources</p>
+        <ul class="space-y-2.5 text-muted">
+          <li><a href="#roi" class="hover:text-ink transition-colors">ROI calculator</a></li>
+          <li><a href="#proposal" class="hover:text-ink transition-colors">Proposal generator</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="font-semibold text-ink mb-3 flex items-center gap-2"><i data-lucide="mail" class="w-4 h-4 text-muted"></i>Contact</p>
+        <ul class="space-y-2.5 text-muted">
+          <li><a href="mailto:hello@autenflo.com" class="hover:text-ink transition-colors">hello@autenflo.com</a></li>
+          <li><span>Remote-first, global team</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-10 pt-6 border-t border-line flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-muted">
+      <p>© <span id="year"></span> autenflo. All rights reserved.</p>
+      <div class="flex gap-5"><a href="#" class="hover:text-ink transition-colors">Privacy</a><a href="#" class="hover:text-ink transition-colors">Terms</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  lucide.createIcons();
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  (function(){
+    const field = document.getElementById('particleField');
+    if(!field) return;
+    const colors = ['#78AEEA','#B49BEA','#72C5AF'];
+    for(let i=0;i<22;i++){
+      const p = document.createElement('div');
+      const size = 2 + Math.random()*3;
+      p.className = 'particle';
+      p.style.width = size+'px'; p.style.height = size+'px';
+      p.style.left = Math.random()*100+'%'; p.style.bottom = (Math.random()*40)+'%';
+      p.style.background = colors[i % colors.length];
+      p.style.animationDuration = (7 + Math.random()*8)+'s';
+      p.style.animationDelay = (Math.random()*10)+'s';
+      field.appendChild(p);
+    }
+  })();
+
+  const revealEls = document.querySelectorAll('.reveal, .reveal-scale');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting){ entry.target.classList.add('in'); io.unobserve(entry.target); } });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+
+  /* ---------------- scroll progress bar ---------------- */
+  (function(){
+    const bar = document.getElementById('scrollProgress');
+    if (!bar) return;
+    function update(){
+      const h = document.documentElement;
+      const scrolled = h.scrollTop;
+      const max = h.scrollHeight - h.clientHeight;
+      bar.style.width = (max > 0 ? (scrolled / max) * 100 : 0) + '%';
+    }
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  })();
+
+  /* ---------------- custom cursor (pointer:fine devices only) ---------------- */
+  (function(){
+    if (!window.matchMedia('(pointer:fine)').matches) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const dot = document.getElementById('cursorDot');
+    const ring = document.getElementById('cursorRing');
+    if (!dot || !ring) return;
+    document.documentElement.classList.add('has-custom-cursor');
+
+    let mx = window.innerWidth/2, my = window.innerHeight/2;
+    let rx = mx, ry = my;
+    window.addEventListener('mousemove', (e) => {
+      mx = e.clientX; my = e.clientY;
+      dot.style.transform = `translate(${mx - 3.5}px, ${my - 3.5}px)`;
+    });
+    function loop(){
+      rx += (mx - rx) * 0.18;
+      ry += (my - ry) * 0.18;
+      ring.style.transform = `translate(${rx - 17}px, ${ry - 17}px)`;
+      requestAnimationFrame(loop);
+    }
+    loop();
+
+    document.addEventListener('mouseover', (e) => {
+      if (e.target.closest('a, button, .cursor-hover, .card-lift, input, textarea, .date-pill, .time-pill')){
+        ring.classList.add('hovering');
+      }
+    });
+    document.addEventListener('mouseout', (e) => {
+      if (e.target.closest('a, button, .cursor-hover, .card-lift, input, textarea, .date-pill, .time-pill')){
+        ring.classList.remove('hovering');
+      }
+    });
+    document.addEventListener('mouseleave', () => { dot.style.opacity = 0; ring.style.opacity = 0; });
+    document.addEventListener('mouseenter', () => { dot.style.opacity = 1; ring.style.opacity = 1; });
+  })();
+
+  /* ---------------- story 2: blueprint draw-on-scroll ---------------- */
+  (function(){
+    const paths = document.querySelectorAll('.blueprint-path');
+    if (!paths.length) return;
+    const bpIo = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting){ entry.target.classList.add('drawn'); bpIo.unobserve(entry.target); }
+      });
+    }, { threshold: 0.3 });
+    paths.forEach(p => bpIo.observe(p));
+  })();
+
+  /* ---------------- booking modal (Direct Strategy Booking) ---------------- */
+  (function(){
+    const MODAL_BOOKING_WEBHOOK = 'https://baggy-kung-glitch.ngrok-free.dev/webhook/booking';
+    const overlay = document.getElementById('bookingOverlay');
+    const closeBtn = document.getElementById('bookingModalClose');
+    const dateList = document.getElementById('modalDateList');
+    const timeList = document.getElementById('modalTimeList');
+    const timeLoading = document.getElementById('modalTimeLoading');
+    const timeLabelText = document.getElementById('modalTimeLabelText');
+    const nameInput = document.getElementById('modalName');
+    const emailInput = document.getElementById('modalEmail');
+    const confirmBtn = document.getElementById('modalConfirm');
+    const confirmLabel = document.getElementById('modalConfirmLabel');
+    const feedback = document.getElementById('modalFeedback');
+    if (!overlay) return;
+
+    const DEFAULT_TIMES = ['10:00 AM','11:30 AM','02:00 PM','04:00 PM','05:30 PM'];
+    let selectedDate = null;
+    let selectedTime = null;
+    let dates = [];
+
+    function fmtDateLabel(d){ return d.toLocaleDateString('en-US', { weekday:'short', month:'short', day:'numeric' }); }
+    function isoDate(d){ return d.toISOString().slice(0,10); }
+
+    function buildDates(){
+      dates = [];
+      const today = new Date();
+      for (let i=0; i<10; i++){
+        const d = new Date(today);
+        d.setDate(today.getDate() + i);
+        dates.push({ iso: isoDate(d), label: fmtDateLabel(d) });
+      }
+    }
+
+    function renderDates(){
+      dateList.innerHTML = '';
+      dates.forEach(d => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'date-pill cursor-hover' + (selectedDate && selectedDate.iso === d.iso ? ' selected' : '');
+        btn.textContent = d.label;
+        btn.addEventListener('click', () => selectDate(d));
+        dateList.appendChild(btn);
+      });
+    }
+
+    function selectDate(d){
+      selectedDate = d; selectedTime = null;
+      renderDates();
+      timeLabelText.textContent = 'Select time (' + d.label + ')';
+      loadAvailability(d.iso);
+      updateConfirmState();
+    }
+
+    async function loadAvailability(iso){
+      timeList.innerHTML = '';
+      timeLoading.classList.remove('hidden');
+      let bookedTimes = [];
+      let times = DEFAULT_TIMES;
+      try {
+        const controller = new AbortController();
+        const timer = setTimeout(() => controller.abort(), 5000);
+        const res = await fetch(MODAL_BOOKING_WEBHOOK, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ action: 'check_availability', date: iso }),
+          signal: controller.signal
+        });
+        clearTimeout(timer);
+        if (res.ok){
+          const data = await res.json();
+          if (Array.isArray(data.available) && data.available.length){ times = data.available; }
+          else if (Array.isArray(data.times) && data.times.length){ times = data.times; }
+          if (Array.isArray(data.booked)){ bookedTimes = data.booked; }
+        }
+      } catch (err) { /* offline or no responder — fall back to defaults, nothing marked booked */ }
+      timeLoading.classList.add('hidden');
+      renderTimes(times, bookedTimes);
+    }
+
+    function renderTimes(times, bookedTimes){
+      timeList.innerHTML = '';
+      times.forEach(t => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'time-pill' + (bookedTimes.includes(t) ? '' : ' cursor-hover');
+        btn.textContent = t;
+        if (bookedTimes.includes(t)){
+          btn.disabled = true;
+        } else {
+          btn.addEventListener('click', () => selectTime(t, btn));
+        }
+        timeList.appendChild(btn);
+      });
+    }
+
+    function selectTime(t, btnEl){
+      selectedTime = t;
+      timeList.querySelectorAll('.time-pill').forEach(b => b.classList.remove('selected'));
+      btnEl.classList.add('selected');
+      updateConfirmState();
+    }
+
+    function updateConfirmState(){ confirmBtn.disabled = !(selectedDate && selectedTime); }
+
+    function openModal(){
+      buildDates();
+      selectedDate = null; selectedTime = null;
+      feedback.classList.add('hidden');
+      nameInput.value = ''; emailInput.value = '';
+      confirmLabel.textContent = '🚀 Confirm Meeting';
+      confirmBtn.disabled = true;
+      renderDates();
+      selectDate(dates[0]);
+      overlay.classList.remove('hidden');
+      overlay.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+      lucide.createIcons();
+    }
+
+    function closeModal(){
+      overlay.classList.add('hidden');
+      overlay.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+
+    closeBtn.addEventListener('click', closeModal);
+    overlay.addEventListener('click', (e) => { if (e.target === overlay) closeModal(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !overlay.classList.contains('hidden')) closeModal(); });
+    document.addEventListener('click', (e) => {
+      const trigger = e.target.closest('[data-open-booking]');
+      if (trigger){ e.preventDefault(); openModal(); }
+    });
+
+    confirmBtn.addEventListener('click', async () => {
+      const name = nameInput.value.trim();
+      const email = emailInput.value.trim();
+      if (!name || !email || !selectedDate || !selectedTime){
+        feedback.textContent = 'Please add your name and email so we can confirm the slot.';
+        feedback.className = 'text-sm text-center rounded-xl px-4 py-3 border border-line bg-section text-muted';
+        feedback.classList.remove('hidden');
+        return;
+      }
+      confirmBtn.disabled = true;
+      confirmLabel.textContent = 'Booking…';
+      feedback.classList.add('hidden');
+
+      try {
+        const res = await fetch(MODAL_BOOKING_WEBHOOK, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            action: 'create_booking', name, email,
+            date: selectedDate.iso, date_label: selectedDate.label, time: selectedTime
+          })
+        });
+        if (!res.ok) throw new Error('Request failed with status ' + res.status);
+        feedback.textContent = `Booked for ${selectedDate.label}, ${selectedTime}. Check your email for the calendar invite.`;
+        feedback.className = 'text-sm text-center rounded-xl px-4 py-3 border border-flo/30 bg-flo/10 text-ink';
+        feedback.classList.remove('hidden');
+        confirmLabel.textContent = '✓ Booked';
+      } catch (err) {
+        feedback.textContent = "We couldn't confirm that just now. Please try again, or email hello@autenflo.com directly.";
+        feedback.className = 'text-sm text-center rounded-xl px-4 py-3 border border-line bg-section text-muted';
+        feedback.classList.remove('hidden');
+        confirmBtn.disabled = false;
+        confirmLabel.textContent = '🚀 Confirm Meeting';
+      }
+    });
+  })();
+
+  const counters = document.querySelectorAll('[data-count]');
+  const countIo = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const target = parseInt(el.getAttribute('data-count'), 10);
+      const suffix = el.getAttribute('data-suffix') || '';
+      const duration = 1400; const start = performance.now();
+      function tick(now){
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(eased * target).toLocaleString('en-US') + suffix;
+        if (progress < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+      countIo.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  counters.forEach(el => countIo.observe(el));
+
+  /* engine word cycler in six-sides core */
+  (function(){
+    const el = document.getElementById('engineWord');
+    if(!el) return;
+    const words = ['is reading', 'is deciding', 'is acting', 'is logging'];
+    let i = 0;
+    setInterval(() => {
+      el.style.opacity = 0;
+      setTimeout(() => { i = (i+1) % words.length; el.textContent = words[i]; el.style.opacity = 1; }, 300);
+    }, 2200);
+  })();
+
+  /* ---------------- AI Proposal Generator ---------------- */
+  const PROPOSAL_WEBHOOK = 'https://baggy-kung-glitch.ngrok-free.dev/webhook/ai-proposal';
+
+  const proposalForm = document.getElementById('proposalForm');
+  const proposalBtn = document.getElementById('proposalSubmit');
+  const proposalBtnLabel = document.getElementById('proposalBtnLabel');
+  const proposalResults = document.getElementById('proposalResults');
+  const proposalError = document.getElementById('proposalError');
+  let loaderInterval = null;
+
+  function fmtMoney(n){
+    const num = Number(n);
+    if (Number.isNaN(num)) return n;
+    return '$' + num.toLocaleString('en-US', { maximumFractionDigits: 0 });
+  }
+
+  function humanizeKey(key){
+    return key.replace(/_/g,' ').replace(/\b\w/g, c => c.toUpperCase());
+  }
+
+  function renderGenericValue(value){
+    if (Array.isArray(value)){
+      return '<ul class="list-disc list-inside space-y-1 text-sm text-ink/90">' + value.map(v => `<li>${typeof v === 'object' ? JSON.stringify(v) : v}</li>`).join('') + '</ul>';
+    } else if (value && typeof value === 'object'){
+      return '<div class="space-y-1 text-sm text-ink/90">' + Object.entries(value).map(([k,v]) => `<p><span class="font-medium">${humanizeKey(k)}:</span> ${v}</p>`).join('') + '</div>';
+    }
+    return `<p class="text-sm text-ink/90">${value}</p>`;
+  }
+
+  function showBrandedLoader(){
+    proposalResults.innerHTML = `
+      <div class="flex flex-col items-center justify-center py-8">
+        <div class="mini-orbit mb-4">
+          <span class="dot" style="background:#78AEEA; animation-delay:0s;"></span>
+          <span class="dot" style="background:#B49BEA; animation-delay:-0.6s;"></span>
+          <span class="dot" style="background:#72C5AF; animation-delay:-1.2s;"></span>
+          <div class="mini-orbit-core">
+            <span class="mini-orbit-logo"><span class="text-aut">aut</span><span class="text-en">en</span><span class="text-flo">flo</span></span>
+          </div>
+        </div>
+        <p id="proposalLoadingText" class="text-sm text-muted font-medium fade-swap">Reading your bottleneck…</p>
+      </div>`;
+    proposalResults.classList.remove('hidden');
+
+    const phrases = ['Reading your bottleneck…','Mapping the manual steps…','Calculating hours & dollars saved…','Drafting your proposal…'];
+    let i = 0;
+    const textEl = document.getElementById('proposalLoadingText');
+    loaderInterval = setInterval(() => {
+      if (!textEl) return;
+      textEl.style.opacity = 0;
+      setTimeout(() => { i = (i+1) % phrases.length; textEl.textContent = phrases[i]; textEl.style.opacity = 1; }, 250);
+    }, 1300);
+  }
+
+  function stopBrandedLoader(){ if (loaderInterval){ clearInterval(loaderInterval); loaderInterval = null; } }
+
+  function escAttr(str){ return String(str ?? '').replace(/"/g,'&quot;'); }
+
+  function pickText(item, fields){
+    if (item == null) return '';
+    if (typeof item === 'string' || typeof item === 'number') return String(item);
+    if (typeof item === 'object'){
+      for (const f of fields){ if (item[f]) return String(item[f]); }
+      const firstString = Object.values(item).find(v => typeof v === 'string' && v.trim());
+      if (firstString) return firstString;
+    }
+    return '';
+  }
+
+  function renderProposal(proposal){
+    const metrics = proposal.metrics || {};
+
+    const isSupported = proposal.is_supported ?? proposal.isSupported;
+    const unsupportedMsg = proposal.unsupported_message || proposal.unsupportedMessage;
+
+    const titleText = proposal.package_name || proposal.packageName || proposal.title || proposal.headline || null;
+    const summaryText = proposal.executive_summary || proposal.executiveSummary || proposal.summary || (!titleText ? proposal.headline : null);
+
+    let html = '';
+
+    /* ---- badge + title + summary ---- */
+    html += `
+      <div class="mb-7">
+        <span class="inline-flex items-center gap-1.5 rounded-full bg-en/10 text-en text-[10px] font-bold uppercase tracking-wide px-3 py-1 mb-3"><i data-lucide="sparkles" class="w-3 h-3"></i>Custom done-for-you blueprint</span>
+        ${titleText ? `<h3 class="font-display text-xl sm:text-2xl font-bold text-ink tracking-tight leading-snug mb-2">${titleText}</h3>` : ''}
+        ${summaryText ? `<p class="text-sm text-muted leading-relaxed">${summaryText}</p>` : ''}
+      </div>`;
+
+    /* ---- unsupported bottleneck: short-circuit to a graceful message ---- */
+    if (isSupported === false){
+      html += `
+        <div class="rounded-2xl bg-section border border-line p-5 mb-8">
+          <p class="text-sm text-ink/90 leading-relaxed">${unsupportedMsg || "We couldn't map this particular bottleneck automatically, but it's very likely still automatable — let's talk it through live."}</p>
+        </div>
+        <div class="rounded-2xl bg-ink px-6 py-8 text-center">
+          <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center mx-auto mb-4"><i data-lucide="rocket" class="w-5 h-5 text-flo"></i></div>
+          <h4 class="font-display text-lg sm:text-xl font-bold text-white mb-2 leading-snug">Let's map this one together</h4>
+          <p class="text-sm text-white/70 mb-5 max-w-xs mx-auto">Tell us more on a quick call and we'll design the exact system for it.</p>
+          <button type="button" data-open-booking class="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-flo px-6 py-3.5 text-[15px] font-semibold text-white hover:brightness-95 transition cursor-hover">
+            Book a 15-min call
+            <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+          </button>
+        </div>`;
+      proposalResults.innerHTML = html;
+      proposalResults.classList.remove('hidden');
+      lucide.createIcons();
+      return;
+    }
+
+    /* ---- metrics ---- */
+    if (Object.keys(metrics).length){
+      html += '<div class="grid sm:grid-cols-3 gap-3 mb-8">';
+      html += `
+        <div class="rounded-2xl bg-section border border-line p-4 text-center">
+          <div class="w-9 h-9 rounded-xl bg-aut/15 flex items-center justify-center mx-auto mb-3"><i data-lucide="clock" class="w-4 h-4 text-aut"></i></div>
+          <p class="font-display text-xl font-bold text-ink num-tabular break-words">${metrics.hours_saved_weekly ?? '—'}</p>
+          <p class="text-[10px] font-semibold text-muted uppercase tracking-wide mt-1">Saved every week</p>
+          <p class="text-[11px] text-muted/80 mt-1.5 leading-snug">Reclaimed time for growth, not busywork</p>
+        </div>
+        <div class="rounded-2xl bg-section border border-line p-4 text-center">
+          <div class="w-9 h-9 rounded-xl bg-flo/15 flex items-center justify-center mx-auto mb-3"><i data-lucide="banknote" class="w-4 h-4 text-flo"></i></div>
+          <p class="font-display text-xl font-bold text-ink num-tabular break-words">${metrics.yearly_cash_saved != null ? fmtMoney(metrics.yearly_cash_saved) : '—'}</p>
+          <p class="text-[10px] font-semibold text-muted uppercase tracking-wide mt-1">Saved every year</p>
+          <p class="text-[11px] text-muted/80 mt-1.5 leading-snug">Cut from manual-work overhead</p>
+        </div>
+        <div class="rounded-2xl bg-section border border-line p-4 text-center">
+          <div class="w-9 h-9 rounded-xl bg-en/15 flex items-center justify-center mx-auto mb-3"><i data-lucide="shield-check" class="w-4 h-4 text-en"></i></div>
+          <p class="font-display text-xl font-bold text-ink num-tabular break-words">${metrics.error_prevention ?? '—'}</p>
+          <p class="text-[10px] font-semibold text-muted uppercase tracking-wide mt-1">Error reduction</p>
+          <p class="text-[11px] text-muted/80 mt-1.5 leading-snug">Consistent output, every single time</p>
+        </div>`;
+      html += '</div>';
+    }
+
+    /* ---- interactive comparison (today vs on autopilot) ---- */
+    const tc = proposal.transformation_comparison || proposal.transformationComparison || null;
+    let oldList = [], newList = [];
+    if (tc){
+      oldList = tc.old_way || tc.oldWay || tc.old || [];
+      newList = tc.autopilot_way || tc.autopilotWay || tc.new_way || tc.new || [];
+    } else {
+      const oldVsNew = proposal.old_vs_new || proposal.oldVsNew || [];
+      if (Array.isArray(oldVsNew) && oldVsNew.length){
+        oldList = oldVsNew.map(r => pickText(r, ['old','manual']));
+        newList = oldVsNew.map(r => pickText(r, ['new','autenflo']));
+      }
+    }
+    const cmpLen = Math.max(oldList.length, newList.length);
+
+    if (cmpLen){
+      html += `
+        <div class="mb-8">
+          <p class="text-[11px] font-semibold text-flo uppercase tracking-wide mb-1.5">Interactive comparison</p>
+          <h4 class="font-display text-base font-bold text-ink mb-4">See the transformation</h4>
+          <div class="inline-flex rounded-full border border-line bg-section p-1 mb-5 text-xs font-semibold gap-1">
+            <button type="button" class="cmp-tab is-active rounded-full px-3.5 py-1.5 flex items-center gap-1.5 transition" data-cmp="old">
+              <span class="w-1.5 h-1.5 rounded-full" style="background:#EF4444"></span>How you work today
+            </button>
+            <button type="button" class="cmp-tab rounded-full px-3.5 py-1.5 flex items-center gap-1.5 transition" data-cmp="new">
+              <span class="w-1.5 h-1.5 rounded-full bg-flo"></span>On autopilot
+            </button>
+          </div>
+          <div class="space-y-2">`;
+      for (let i = 0; i < cmpLen; i++){
+        const oldTxt = pickText(oldList[i], ['old','manual','text','description','title']);
+        const newTxt = pickText(newList[i], ['new','autenflo','text','description','title']);
+        html += `
+            <div class="cmp-row rounded-xl border border-line px-4 py-3 text-sm flex items-center gap-3" data-old="${escAttr(oldTxt)}" data-new="${escAttr(newTxt)}">
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5 text-flo shrink-0"></i>
+              <span class="cmp-text text-muted line-through decoration-muted/40">${oldTxt}</span>
+            </div>`;
+      }
+      html += `
+          </div>
+        </div>`;
+    }
+
+    /* ---- simple step-by-step process ---- */
+    const steps = proposal.three_step_process || proposal.threeStepProcess || proposal.implementation_steps || proposal.steps || [];
+    if (Array.isArray(steps) && steps.length){
+      html += `
+        <div class="mb-8">
+          <p class="text-[11px] font-semibold text-en uppercase tracking-wide mb-1.5">Simple process</p>
+          <h4 class="font-display text-base font-bold text-ink mb-4">How your new system works</h4>
+          <div class="space-y-3">`;
+      steps.forEach((step, i) => {
+        const isObj = step && typeof step === 'object';
+        const icon = isObj ? (step.icon || null) : null;
+        const title = isObj ? (step.title || step.name || null) : null;
+        const desc = isObj ? (step.description || step.detail || pickText(step, [])) : step;
+        const badge = isObj ? (step.badge || step.performance || step.metric || step.execution) : null;
+        html += `
+            <div class="rounded-xl border border-line p-4">
+              <div class="flex items-center justify-between gap-3 mb-2">
+                <span class="inline-flex items-center gap-2 text-[10px] font-bold text-muted uppercase tracking-wide">
+                  <span class="w-5 h-5 rounded-full bg-ink text-white flex items-center justify-center text-[10px] shrink-0">${icon || (i+1)}</span>Step ${i+1}
+                </span>
+                ${badge ? `<span class="text-[10px] font-semibold text-flo shrink-0">${badge}</span>` : ''}
+              </div>
+              ${title ? `<p class="font-semibold text-ink text-sm mb-1">${title}</p>` : ''}
+              <p class="text-sm text-ink/90 leading-relaxed">${desc}</p>
+            </div>`;
+      });
+      html += `
+          </div>
+        </div>`;
+    }
+
+    /* ---- workflows this unlocks ---- */
+    const workflows = proposal.workflows || [];
+    if (Array.isArray(workflows) && workflows.length){
+      html += `
+        <div class="mb-8">
+          <p class="text-[11px] font-semibold text-aut uppercase tracking-wide mb-1.5">Under the hood</p>
+          <h4 class="font-display text-base font-bold text-ink mb-4">Workflows this unlocks</h4>
+          <div class="space-y-3">`;
+      workflows.forEach(wf => {
+        const isObj = wf && typeof wf === 'object';
+        const name = isObj ? (wf.name || wf.title) : wf;
+        const problem = isObj ? wf.problem : null;
+        const solution = isObj ? wf.solution : null;
+        const impact = isObj ? (wf.profit_impact || wf.profitImpact || wf.impact) : null;
+        html += `
+            <div class="rounded-xl border border-line p-4">
+              ${name ? `<p class="font-semibold text-ink text-sm mb-2">${name}</p>` : ''}
+              ${problem ? `<p class="text-xs text-muted leading-relaxed mb-1.5"><span class="font-semibold text-ink/70">The problem — </span>${problem}</p>` : ''}
+              ${solution ? `<p class="text-xs text-ink/80 leading-relaxed mb-1.5"><span class="font-semibold text-ink/70">How autenflo solves it — </span>${solution}</p>` : ''}
+              ${impact ? `<p class="text-xs text-flo font-medium leading-relaxed"><span class="font-semibold">Impact — </span>${impact}</p>` : ''}
+            </div>`;
+      });
+      html += `
+          </div>
+        </div>`;
+    }
+
+    /* ---- final CTA panel ---- */
+    const ctaHeadline = metrics.hours_saved_weekly ? `Ready to get ${metrics.hours_saved_weekly} back every week?` : 'Ready to put this on autopilot?';
+    html += `
+      <div class="rounded-2xl bg-ink px-6 py-8 text-center">
+        <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center mx-auto mb-4"><i data-lucide="rocket" class="w-5 h-5 text-flo"></i></div>
+        <h4 class="font-display text-lg sm:text-xl font-bold text-white mb-2 leading-snug">${ctaHeadline}</h4>
+        <p class="text-sm text-white/70 mb-5 max-w-xs mx-auto">We build, test, and manage all of this for you — zero technical work needed on your side.</p>
+        <button type="button" data-open-booking class="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-flo px-6 py-3.5 text-[15px] font-semibold text-white hover:brightness-95 transition cursor-hover">
+          Book a 15-min call to build this
+          <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+        </button>
+        <p class="text-[11px] text-white/50 mt-3">No pressure · Free 15-min strategy call</p>
+      </div>`;
+
+    proposalResults.innerHTML = html;
+    proposalResults.classList.remove('hidden');
+    lucide.createIcons();
+
+    proposalResults.querySelectorAll('.cmp-tab').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const state = btn.dataset.cmp;
+        proposalResults.querySelectorAll('.cmp-tab').forEach(b => b.classList.toggle('is-active', b === btn));
+        proposalResults.querySelectorAll('.cmp-row').forEach(row => {
+          const span = row.querySelector('.cmp-text');
+          if (!span) return;
+          span.textContent = state === 'old' ? row.dataset.old : row.dataset.new;
+          span.classList.toggle('line-through', state === 'old');
+          span.classList.toggle('decoration-muted/40', state === 'old');
+          span.classList.toggle('text-muted', state === 'old');
+          span.classList.toggle('text-ink', state === 'new');
+          span.classList.toggle('font-medium', state === 'new');
+        });
+      });
+    });
+  }
+
+  proposalForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const prompt = document.getElementById('bottleneck').value.trim();
+    if (!prompt) return;
+
+    proposalBtn.disabled = true;
+    proposalBtnLabel.textContent = 'Generating…';
+    proposalError.classList.add('hidden');
+    showBrandedLoader();
+
+    try {
+      const res = await fetch(PROPOSAL_WEBHOOK, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prompt })
+      });
+      if (!res.ok) throw new Error('Request failed with status ' + res.status);
+      const data = await res.json();
+      const proposal = data.proposal || data;
+      stopBrandedLoader();
+      renderProposal(proposal);
+    } catch (err) {
+      stopBrandedLoader();
+      proposalResults.classList.add('hidden');
+      proposalError.textContent = "We couldn't reach the proposal engine just now. Please try again in a moment, or book a call and we'll walk through it live.";
+      proposalError.classList.remove('hidden');
+    } finally {
+      proposalBtn.disabled = false;
+      proposalBtnLabel.textContent = 'Generate proposal';
+    }
+  });
+
+  /* ---------------- ROI Calculator (USD) ---------------- */
+  const roiTeam = document.getElementById('roiTeam');
+  const roiHours = document.getElementById('roiHours');
+  const roiRate = document.getElementById('roiRate');
+
+  function updateRoi(){
+    const team = Number(roiTeam.value);
+    const hours = Number(roiHours.value);
+    const rate = Number(roiRate.value);
+    const hoursYear = team * hours * 52;
+    const yearlyCost = hoursYear * rate;
+    const savedAt80 = yearlyCost * 0.8;
+
+    document.getElementById('roiTeamVal').textContent = team;
+    document.getElementById('roiHoursVal').textContent = hours;
+    document.getElementById('roiRateVal').textContent = '$' + rate.toLocaleString('en-US');
+    document.getElementById('roiYearly').textContent = fmtMoney(yearlyCost);
+    document.getElementById('roiHoursYear').textContent = hoursYear.toLocaleString('en-US');
+    document.getElementById('roiSaved').textContent = fmtMoney(savedAt80);
+  }
+  [roiTeam, roiHours, roiRate].forEach(el => el.addEventListener('input', updateRoi));
+  updateRoi();
+
+  /* ---------------- FAQ accordion ---------------- */
+  document.querySelectorAll('.faq-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const panel = item.querySelector('.faq-panel');
+      const icon = item.querySelector('.faq-icon');
+      const opening = panel.classList.contains('hidden');
+      panel.classList.toggle('hidden', !opening);
+      icon.classList.toggle('rotate-45', opening);
+      item.classList.toggle('shadow-sm', opening);
+    });
+  });
+
+  /* ---------------- Booking form (fallback on-page form) ---------------- */
+  const BOOKING_WEBHOOK = 'https://baggy-kung-glitch.ngrok-free.dev/webhook/booking';
+  const bookingForm = document.getElementById('bookingForm');
+  const bookingBtn = document.getElementById('bookingSubmit');
+  const bookingBtnLabel = document.getElementById('bookingBtnLabel');
+  const bookingFeedback = document.getElementById('bookingFeedback');
+
+  bookingForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const payload = {
+      name: document.getElementById('bName').value.trim(),
+      email: document.getElementById('bEmail').value.trim(),
+      need: document.getElementById('bNeed').value.trim(),
+      when: document.getElementById('bWhen').value
+    };
+
+    bookingBtn.disabled = true;
+    bookingBtnLabel.textContent = 'Sending…';
+    bookingFeedback.classList.add('hidden');
+
+    try {
+      const res = await fetch(BOOKING_WEBHOOK, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      if (!res.ok) throw new Error('Request failed with status ' + res.status);
+      bookingFeedback.textContent = "Request sent — we'll confirm your slot by email shortly.";
+      bookingFeedback.className = 'text-sm rounded-xl px-4 py-3 border border-flo/30 bg-flo/10 text-ink';
+      bookingFeedback.classList.remove('hidden');
+      bookingForm.reset();
+    } catch (err) {
+      bookingFeedback.textContent = "We couldn't send that just now. Please try again, or email hello@autenflo.com directly.";
+      bookingFeedback.className = 'text-sm rounded-xl px-4 py-3 border border-line bg-section text-muted';
+      bookingFeedback.classList.remove('hidden');
+    } finally {
+      bookingBtn.disabled = false;
+      bookingBtnLabel.textContent = 'Request this time';
+    }
+  });
+</script>
+
+</body>
+</html>
