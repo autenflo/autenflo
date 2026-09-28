@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI Automation Cost &amp; ROI: How to Estimate Both | autenflo</title>
+<meta name="description" content="How to estimate what manual work costs today, what drives the cost of automating it, and how to think about return on investment, with a worked example." />
+<link rel="canonical" href="https://autenflo.com/guides/ai-automation-cost-and-roi/" />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="autenflo" />
+<meta property="og:title" content="AI Automation Cost &amp; ROI: How to Estimate Both | autenflo" />
+<meta property="og:description" content="How to estimate what manual work costs today, what drives the cost of automating it, and how to think about return on investment, with a worked example." />
+<meta property="og:url" content="https://autenflo.com/guides/ai-automation-cost-and-roi/" />
+<meta property="og:image" content="https://autenflo.com/logo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="AI Automation Cost &amp; ROI: How to Estimate Both | autenflo" />
+<meta name="twitter:description" content="How to estimate what manual work costs today, what drives the cost of automating it, and how to think about return on investment, with a worked example." />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6012ZHG9SS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-6012ZHG9SS');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          base: '#FBFCFD', section: '#F5F7F9', surface: '#FFFFFF',
+          ink: '#17202A', muted: '#667085', line: '#E6EAF0',
+          aut: '#78AEEA', en: '#B49BEA', flo: '#72C5AF',
+        },
+        fontFamily: {
+          display: ['Outfit', 'sans-serif'],
+          body: ['Plus Jakarta Sans', 'sans-serif'],
+        },
+      }
+    }
+  }
+</script>
+<style>
+  :root{ --aut:#78AEEA; --en:#B49BEA; --flo:#72C5AF; --ink:#17202A; --muted:#667085; --line:#E6EAF0; }
+  *{ scroll-behavior: smooth; }
+  body{ background-color:#FBFCFD; font-family:'Plus Jakarta Sans', sans-serif; color:#17202A; overflow-x: clip; }
+  h1,h2,h3,h4,.font-display{ font-family:'Outfit', sans-serif; }
+  ::selection{ background:#B49BEA33; color:#17202A; }
+  :focus-visible{ outline:2px solid var(--aut); outline-offset:3px; border-radius:6px; }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; }
+  }
+
+  .aurora{ position:absolute; inset:0; overflow:hidden; pointer-events:none; z-index:0; }
+  .aurora span{ position:absolute; border-radius:9999px; filter:blur(70px); opacity:0.5; }
+  @keyframes auroraMove1{ 0%,100%{ transform:translate(0,0) scale(1);} 50%{ transform:translate(60px,40px) scale(1.15);} }
+  @keyframes auroraMove2{ 0%,100%{ transform:translate(0,0) scale(1);} 50%{ transform:translate(-50px,30px) scale(1.1);} }
+  @keyframes auroraMove3{ 0%,100%{ transform:translate(0,0) scale(1);} 50%{ transform:translate(30px,-40px) scale(1.2);} }
+  .aurora .a1{ width:38vw; height:38vw; left:-8%; top:-10%; background:#78AEEA; animation:auroraMove1 16s ease-in-out infinite; }
+  .aurora .a2{ width:32vw; height:32vw; right:-6%; top:0%; background:#B49BEA; animation:auroraMove2 19s ease-in-out infinite; }
+  .aurora .a3{ width:30vw; height:30vw; left:30%; bottom:-18%; background:#72C5AF; animation:auroraMove3 21s ease-in-out infinite; }
+
+  @keyframes drift{ 0%{ transform:translateY(0) translateX(0); opacity:0; } 10%{ opacity:.7; } 90%{ opacity:.5; } 100%{ transform:translateY(-140px) translateX(20px); opacity:0; } }
+  .particle{ position:absolute; border-radius:9999px; animation:drift linear infinite; }
+
+  @keyframes float{ 0%,100%{ transform: translateY(0px) rotate(0deg);} 50%{ transform: translateY(-14px) rotate(1deg);} }
+  @keyframes floatSlow{ 0%,100%{ transform: translateY(0px);} 50%{ transform: translateY(-9px);} }
+  .float-a{ animation: float 7s ease-in-out infinite; }
+  .float-b{ animation: floatSlow 8.5s ease-in-out infinite; animation-delay: -2.3s; }
+  .float-c{ animation: float 6.2s ease-in-out infinite; animation-delay: -4.1s; }
+
+  @keyframes pulseGlow{
+    0%,100%{ box-shadow: 0 0 0 0 rgba(120,174,234,0.28), 0 10px 30px -10px rgba(23,32,42,0.12); }
+    50%{ box-shadow: 0 0 0 14px rgba(120,174,234,0), 0 10px 30px -10px rgba(23,32,42,0.12); }
+  }
+  .glow-pulse{ animation: pulseGlow 3.2s ease-in-out infinite; }
+
+  @keyframes borderTravel{ to{ background-position: 300% 0; } }
+  .glow-border{ position:relative; border-radius:20px; }
+  .glow-border::before{
+    content:''; position:absolute; inset:-1.5px; border-radius:inherit; padding:1.5px;
+    background: linear-gradient(90deg, var(--aut), var(--en), var(--flo), var(--aut));
+    background-size:300% 100%;
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor; mask-composite: exclude;
+    animation: borderTravel 6s linear infinite; opacity:0; transition: opacity .35s ease; pointer-events:none;
+  }
+  .glow-border:hover::before, .glow-border:focus-within::before{ opacity:1; }
+  .glow-border-always::before{ opacity:1; }
+
+  @keyframes dashFlow{ to{ stroke-dashoffset: -120; } }
+  .flow-line{ stroke-dasharray: 6 8; animation: dashFlow 3.5s linear infinite; }
+
+  @keyframes corePulse{ 0%,100%{ transform: scale(1); opacity:0.55; } 50%{ transform: scale(1.18); opacity:0.05; } }
+  .core-ring{ animation: corePulse 2.6s ease-in-out infinite; transform-origin:center; }
+  .core-ring2{ animation: corePulse 2.6s ease-in-out infinite; animation-delay:-1.3s; transform-origin:center; }
+
+  @keyframes shimmerBadge{ 0%,100%{ transform: translateY(0);} 50%{ transform: translateY(-6px);} }
+  .badge-float{ animation: shimmerBadge 4.5s ease-in-out infinite; }
+
+  .card-lift{ transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s ease; }
+  .card-lift:hover{ transform: translateY(-6px); box-shadow: 0 24px 48px -20px rgba(23,32,42,0.16); }
+
+  .num-tabular{ font-variant-numeric: tabular-nums; }
+
+  .range-flo::-webkit-slider-thumb{ -webkit-appearance:none; appearance:none; width:20px; height:20px; border-radius:9999px; background:#72C5AF; border:3px solid white; box-shadow: 0 2px 8px rgba(23,32,42,0.25); cursor:pointer; margin-top:-8px; }
+  .range-flo::-webkit-slider-runnable-track{ height:4px; border-radius:9999px; background:#E6EAF0; }
+  .range-flo::-moz-range-thumb{ width:20px; height:20px; border-radius:9999px; background:#72C5AF; border:3px solid white; box-shadow: 0 2px 8px rgba(23,32,42,0.25); cursor:pointer; }
+  .range-flo::-moz-range-track{ height:4px; border-radius:9999px; background:#E6EAF0; }
+
+  .grid-mesh{
+    background-image: linear-gradient(#E6EAF0 1px, transparent 1px), linear-gradient(90deg, #E6EAF0 1px, transparent 1px);
+    background-size: 42px 42px;
+    -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 40%, #000 40%, transparent 90%);
+    mask-image: radial-gradient(ellipse 70% 70% at 50% 40%, #000 40%, transparent 90%);
+  }
+
+  .reveal{ opacity:0; transform: translateY(26px); transition: opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+  .reveal-scale{ opacity:0; transform: scale(.92); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
+  .reveal-scale.in{ opacity:1; transform:scale(1); }
+
+  @keyframes marquee{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
+  .marquee-track{ animation: marquee 26s linear infinite; }
+  .marquee-wrap:hover .marquee-track{ animation-play-state: paused; }
+
+  .orbit-node{ position:absolute; transform:translate(-50%,-50%); }
+  @keyframes ringSpin{ to{ transform: rotate(360deg); } }
+  .orbit-ring{ animation: ringSpin 40s linear infinite; }
+  .orbit-ring-rev{ animation: ringSpin 55s linear infinite reverse; }
+
+  .illus-icon{ transition: transform .5s cubic-bezier(.2,.8,.2,1); }
+  .illus-card:hover .illus-icon{ transform: scale(1.08) rotate(-2deg); }
+
+  /* mini branded loader */
+  .mini-orbit{ position:relative; width:92px; height:92px; }
+  .mini-orbit .dot{ position:absolute; top:50%; left:50%; width:10px; height:10px; margin:-5px; border-radius:9999px; animation: miniOrbitSpin 1.8s linear infinite; }
+  .mini-orbit-core{ position:absolute; inset:19px; border-radius:9999px; background:#FFFFFF; border:1px solid #E6EAF0; box-shadow:0 4px 14px rgba(23,32,42,0.08); display:flex; align-items:center; justify-content:center; }
+  .mini-orbit-logo{ font-family:'Outfit', sans-serif; font-weight:800; font-size:10px; letter-spacing:-0.02em; }
+  @keyframes miniOrbitSpin{ from{ transform:rotate(0deg) translateX(38px) rotate(0deg);} to{ transform:rotate(360deg) translateX(38px) rotate(-360deg);} }
+
+  /* story timeline */
+  .story-line{ position:relative; height:2px; background:#E6EAF0; overflow:hidden; }
+  .story-line::after{ content:''; position:absolute; top:0; left:-30%; width:30%; height:100%; background:linear-gradient(90deg, transparent, #78AEEA, #B49BEA, #72C5AF, transparent); animation: storySweep 3.4s linear infinite; }
+  @keyframes storySweep{ from{ left:-30%; } to{ left:100%; } }
+
+  .fade-swap{ transition: opacity .3s ease; }
+
+  /* proposal comparison toggle */
+  .cmp-tab{ color:#667085; background:transparent; }
+  .cmp-tab.is-active{ background:#fff; color:#17202A; box-shadow:0 1px 4px rgba(23,32,42,0.12); }
+
+  /* ---------------- booking modal ---------------- */
+  @keyframes modalPop{ from{ opacity:0; transform: translateY(16px) scale(.97); } to{ opacity:1; transform: translateY(0) scale(1); } }
+  #bookingModal{ animation: modalPop .35s cubic-bezier(.2,.8,.2,1); }
+  .date-pill{ flex:0 0 auto; white-space:nowrap; padding:.6rem 1rem; border-radius:9999px; border:1.5px solid #E6EAF0; background:#FFFFFF; font-size:.8rem; font-weight:600; color:#17202A; cursor:pointer; transition:all .2s ease; }
+  .date-pill:hover{ border-color:#78AEEA; }
+  .date-pill.selected{ border-color:#72C5AF; color:#2C8A6E; background:rgba(114,197,175,.1); box-shadow:0 0 0 3px rgba(114,197,175,.12); }
+  .time-pill{ padding:.75rem .5rem; border-radius:12px; border:1.5px solid #E6EAF0; background:#FFFFFF; font-size:.82rem; font-weight:600; color:#17202A; cursor:pointer; transition:all .2s ease; text-align:center; }
+  .time-pill:hover:not(:disabled){ border-color:#78AEEA; background:rgba(120,174,234,.06); }
+  .time-pill.selected{ border-color:#78AEEA; background:rgba(120,174,234,.12); color:#3E6FA8; box-shadow:0 0 0 3px rgba(120,174,234,.14); }
+  .time-pill:disabled{ color:#a3adba; text-decoration:line-through; background:#F5F7F9; cursor:not-allowed; opacity:.7; }
+
+  /* ---------------- custom cursor (pointer devices only) ---------------- */
+  .has-custom-cursor, .has-custom-cursor *{ cursor:none !important; }
+  #cursorDot, #cursorRing{ position:fixed; top:0; left:0; z-index:[300]; pointer-events:none; border-radius:9999px; will-change:transform; }
+  #cursorDot{ width:7px; height:7px; background:#17202A; z-index:300; }
+  #cursorRing{ width:34px; height:34px; border:1.5px solid rgba(23,32,42,0.35); z-index:299; transition: width .25s ease, height .25s ease, border-color .25s ease, background .25s ease; }
+  #cursorRing.hovering{ width:56px; height:56px; border-color:#72C5AF; background:rgba(114,197,175,.08); }
+
+  /* ---------------- scroll progress ---------------- */
+  #scrollProgress{ position:fixed; top:0; left:0; height:3px; width:0%; z-index:200; background:linear-gradient(90deg,#78AEEA,#B49BEA,#72C5AF); transition:width .1s linear; }
+
+  /* ---------------- story: staff vs system ---------------- */
+  .story-toggle-track{ position:relative; width:64px; height:34px; border-radius:9999px; background:#E6EAF0; cursor:pointer; transition:background .3s ease; flex:0 0 auto; }
+  .story-toggle-track.on{ background:#72C5AF; }
+  .story-toggle-knob{ position:absolute; top:3px; left:3px; width:28px; height:28px; border-radius:9999px; background:#fff; box-shadow:0 2px 6px rgba(23,32,42,.25); transition:transform .3s cubic-bezier(.2,.8,.2,1); }
+  .story-toggle-track.on .story-toggle-knob{ transform:translateX(30px); }
+  .cost-bar{ height:14px; border-radius:9999px; background:#E6EAF0; overflow:hidden; }
+  .cost-bar-fill{ height:100%; border-radius:9999px; transition: width 1s cubic-bezier(.2,.8,.2,1); }
+
+  /* ---------------- story: bespoke blueprint ---------------- */
+  .blueprint-path{ stroke-dasharray:600; stroke-dashoffset:600; transition:stroke-dashoffset 1.8s cubic-bezier(.2,.8,.2,1); }
+  .blueprint-path.drawn{ stroke-dashoffset:0; }
+  .blueprint-card{ transition:transform .4s cubic-bezier(.2,.8,.2,1), box-shadow .4s ease, border-color .4s ease; }
+  .blueprint-card:hover{ transform:translateY(-8px) rotate(-0.3deg); box-shadow:0 30px 60px -24px rgba(23,32,42,0.22); }
+
+  /* ---------------- client logo chips ---------------- */
+  .client-logo-mark{ width:34px; height:34px; border-radius:9px; display:flex; align-items:center; justify-content:center; font-family:'Outfit',sans-serif; font-weight:800; font-size:12px; color:#fff; flex-shrink:0; }
+
+  /* ---------------- illustration scenes ---------------- */
+  .scene-float-1{ animation: float 6.5s ease-in-out infinite; }
+  .scene-float-2{ animation: floatSlow 7.8s ease-in-out infinite; animation-delay:-2s; }
+  .scene-float-3{ animation: float 5.6s ease-in-out infinite; animation-delay:-3.4s; }
+
+  @media (max-width: 768px){
+    #cursorDot, #cursorRing{ display:none; }
+  }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://autenflo.com/#organization",
+      "name": "autenflo",
+      "alternateName": "Autenflo",
+      "url": "https://autenflo.com/",
+      "logo": "https://autenflo.com/logo.png",
+      "description": "autenflo is a business, technology, and AI consulting company that helps businesses identify repetitive work, improve operations, and implement AI-powered workflow automation.",
+      "email": "hello@autenflo.com"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://autenflo.com/#website",
+      "url": "https://autenflo.com/",
+      "name": "autenflo",
+      "description": "autenflo is a business, technology, and AI consulting company that helps businesses identify repetitive work, improve operations, and implement AI-powered workflow automation.",
+      "publisher": {
+        "@id": "https://autenflo.com/#organization"
+      },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "Article",
+      "@id": "https://autenflo.com/guides/ai-automation-cost-and-roi/#article",
+      "headline": "AI business automation: how to estimate cost and ROI",
+      "description": "How to estimate what manual work costs today, what drives the cost of automating it, and how to think about return on investment, with a worked example.",
+      "mainEntityOfPage": "https://autenflo.com/guides/ai-automation-cost-and-roi/",
+      "url": "https://autenflo.com/guides/ai-automation-cost-and-roi/",
+      "datePublished": "2026-09-28",
+      "dateModified": "2026-09-28",
+      "author": {
+        "@id": "https://autenflo.com/#organization"
+      },
+      "publisher": {
+        "@id": "https://autenflo.com/#organization"
+      },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://autenflo.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Automation cost and ROI",
+          "item": "https://autenflo.com/guides/ai-automation-cost-and-roi/"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="antialiased">
+<header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-line">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
+    <a href="/" class="shrink-0" aria-label="autenflo home">
+      <img src="/logo.png" alt="autenflo" class="h-12 sm:h-14 w-auto drop-shadow-sm" />
+    </a>
+
+    <nav class="hidden md:flex items-center gap-9 text-[15px] font-medium text-ink/80">
+      <a href="/#for-you" class="relative group py-1">Who it's for<span class="absolute left-0 -bottom-0.5 h-[2px] w-0 bg-flo transition-all duration-300 group-hover:w-full"></span></a>
+      <a href="/#services" class="relative group py-1">Services<span class="absolute left-0 -bottom-0.5 h-[2px] w-0 bg-flo transition-all duration-300 group-hover:w-full"></span></a>
+      <a href="/#how-it-works" class="relative group py-1">How it works<span class="absolute left-0 -bottom-0.5 h-[2px] w-0 bg-flo transition-all duration-300 group-hover:w-full"></span></a>
+      <a href="/#departments" class="relative group py-1">What it covers<span class="absolute left-0 -bottom-0.5 h-[2px] w-0 bg-flo transition-all duration-300 group-hover:w-full"></span></a>
+      <a href="/#roi" class="relative group py-1">ROI calculator<span class="absolute left-0 -bottom-0.5 h-[2px] w-0 bg-flo transition-all duration-300 group-hover:w-full"></span></a>
+      <a href="/#showcase" class="relative group py-1">Results<span class="absolute left-0 -bottom-0.5 h-[2px] w-0 bg-flo transition-all duration-300 group-hover:w-full"></span></a>
+    </nav>
+
+    <a href="/#contact" class="inline-flex items-center gap-2 rounded-full bg-flo px-4 sm:px-5 py-2.5 text-[15px] font-semibold text-white shadow-[0_8px_20px_-8px_rgba(114,197,175,0.7)] hover:brightness-95 transition cursor-hover">
+      <i data-lucide="calendar-clock" class="w-4 h-4"></i>
+      <span class="hidden sm:inline">Book 15-min call</span>
+      <span class="sm:hidden">Book call</span>
+    </a>
+  </div>
+</header><main class="py-12 lg:py-16"><div class="max-w-3xl mx-auto px-6 lg:px-10"><nav aria-label="Breadcrumb" class="text-sm text-muted mb-6"><a href="/" class="hover:text-ink transition-colors">Home</a> <span class="mx-1">/</span> <span class="text-ink/80">Automation cost and ROI</span></nav><h1 class="font-display text-4xl sm:text-5xl font-bold text-ink tracking-tight leading-[1.1] mb-6">AI business automation: how to estimate cost and ROI</h1><p class="text-lg text-ink leading-relaxed mb-8 rounded-2xl border border-line bg-white p-6">The cost of automating a process depends on how many workflows, tools and exceptions are involved, so there is no single price. The return comes from comparing what the manual work costs today with the cost of building and running the automation. autenflo does not publish fixed prices; we scope cost after mapping your process.</p><h2 class="font-display text-2xl sm:text-3xl font-bold text-ink tracking-tight mb-4 mt-10">Step 1: Estimate what the manual work costs today</h2><p class="text-[17px] text-muted leading-relaxed mb-4">Multiply the number of people doing the task by the hours each spends per week, by their hourly cost, by 52 weeks. For example, 6 people spending 8 hours a week at $25 an hour comes to 6 × 8 × $25 × 52 = $62,400 a year. This is the same calculation used by the ROI calculator on our homepage. The figures are an example, not a benchmark.</p><h2 class="font-display text-2xl sm:text-3xl font-bold text-ink tracking-tight mb-4 mt-10">Step 2: Understand what drives the cost of automating</h2><p class="text-[17px] text-muted leading-relaxed mb-4">Cost generally rises with the number of separate workflows, the number of tools that must be connected, how messy or non-standard the current process is, and how many exceptions need a human checkpoint. Ongoing costs such as tool subscriptions and monitoring should be included, not just the build.</p><h2 class="font-display text-2xl sm:text-3xl font-bold text-ink tracking-tight mb-4 mt-10">Step 3: Be realistic about how much can be automated</h2><p class="text-[17px] text-muted leading-relaxed mb-4">Not every hour of manual work can be removed. Our calculator shows an 80% figure as an illustration only. Your real share depends on the process, and some steps will always need a person. It is safer to estimate conservatively.</p><h2 class="font-display text-2xl sm:text-3xl font-bold text-ink tracking-tight mb-4 mt-10">Step 4: Count more than hours</h2><p class="text-[17px] text-muted leading-relaxed mb-4">Time saved is only part of the return. Also consider fewer errors, faster response to customers and leads, and a quicker month-end close. These are harder to price, so estimate them separately and label them as estimates.</p><h2 class="font-display text-2xl sm:text-3xl font-bold text-ink tracking-tight mb-4 mt-10">Step 5: Compare against total cost</h2><p class="text-[17px] text-muted leading-relaxed mb-4">Divide the total first-year cost, including build and running costs, by the estimated yearly benefit to see roughly how long payback might take. If the benefit is uncertain, use a range rather than one number.</p><p class="text-[17px] text-muted leading-relaxed mb-4">Try the numbers yourself in the <a class="font-semibold text-ink underline decoration-flo decoration-2 underline-offset-4" href="/#roi">ROI calculator</a> on the homepage.</p><section class="mt-12"><h2 class="font-display text-2xl sm:text-3xl font-bold text-ink tracking-tight mb-4">Frequently asked questions</h2><h3 class="font-display text-lg font-semibold text-ink mt-6 mb-2">How much does AI automation cost?</h3><p class="text-[17px] text-muted leading-relaxed mb-4">It varies with the number of workflows, tools and exceptions involved. We scope it after understanding your process, and we do not publish fixed prices.</p><h3 class="font-display text-lg font-semibold text-ink mt-6 mb-2">How is automation ROI calculated?</h3><p class="text-[17px] text-muted leading-relaxed mb-4">Compare the yearly value of the time and errors saved with the total cost of building and running the automation. Use conservative estimates and show ranges.</p><h3 class="font-display text-lg font-semibold text-ink mt-6 mb-2">How long does it take to see a return?</h3><p class="text-[17px] text-muted leading-relaxed mb-4">It depends on the size of the process and the cost of the build. Repeated, high-volume tasks tend to pay back sooner than occasional ones.</p><h3 class="font-display text-lg font-semibold text-ink mt-6 mb-2">What should I automate first?</h3><p class="text-[17px] text-muted leading-relaxed mb-4">Choose something repeated often, clearly defined, and currently costing real time, such as follow-up on new leads or invoice matching.</p></section><section class="mt-12"><h2 class="font-display text-2xl sm:text-3xl font-bold text-ink tracking-tight mb-4">Related</h2><ul class="space-y-2 text-[17px]"><li><a href="/solutions/" class="font-semibold text-ink underline decoration-flo decoration-2 underline-offset-4 hover:decoration-aut">All automation solutions</a></li><li><a href="/solutions/lead-follow-up-automation/" class="font-semibold text-ink underline decoration-flo decoration-2 underline-offset-4 hover:decoration-aut">Lead follow-up automation</a></li><li><a href="/solutions/invoice-automation/" class="font-semibold text-ink underline decoration-flo decoration-2 underline-offset-4 hover:decoration-aut">Invoice automation</a></li></ul></section><section class="mt-14 rounded-[24px] border border-line bg-white p-8 sm:p-10">
+<h2 class="font-display text-2xl font-bold text-ink tracking-tight mb-3">Want a scoped estimate for your process?</h2>
+<p class="text-[17px] text-muted leading-relaxed mb-4">Book a 15-minute call, or describe one bottleneck on the homepage to get an instant proposal. No commitment to build anything.</p>
+<div class="flex flex-wrap gap-4"><a href="/#contact" class="inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3.5 text-[15px] font-semibold text-white hover:bg-ink/90 transition">Book a 15-minute call</a>
+<a href="/#proposal" class="inline-flex items-center gap-2 rounded-full border border-line bg-white px-6 py-3.5 text-[15px] font-semibold text-ink hover:border-ink/30 transition">Get an instant proposal</a></div></section><p class="text-sm text-muted mt-8">By the autenflo team. Published and last updated 2026-09-28.</p></div></main><footer class="pt-16 pb-10 bg-white border-t border-line">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="flex flex-col items-center text-center">
+      <img src="/logo.png" alt="autenflo" class="h-11 w-auto mb-6" />
+      <p class="text-muted max-w-sm mb-10">Business, technology &amp; AI consulting for growing companies worldwide who'd rather build than do busywork.</p>
+    </div>
+
+    <!-- trust badges -->
+    <div class="flex flex-wrap items-center justify-center gap-x-10 gap-y-6 pb-10 mb-10 border-b border-line">
+      <div class="flex items-center gap-2.5 text-sm text-ink/80"><i data-lucide="shield-check" class="w-4.5 h-4.5 text-flo shrink-0"></i>Data encrypted, never sold</div>
+      <div class="flex items-center gap-2.5 text-sm text-ink/80"><i data-lucide="headset" class="w-4.5 h-4.5 text-aut shrink-0"></i>Real humans behind every build</div>
+      <div class="flex items-center gap-2.5 text-sm text-ink/80"><i data-lucide="globe" class="w-4.5 h-4.5 text-en shrink-0"></i>Remote-first, serving clients worldwide</div>
+      <div class="flex items-center gap-2.5 text-sm text-ink/80"><i data-lucide="rotate-ccw" class="w-4.5 h-4.5 text-flo shrink-0"></i>No lock-in, cancel anytime</div>
+      <div class="flex items-center gap-2.5 text-sm text-ink/80"><i data-lucide="users" class="w-4.5 h-4.5 text-aut shrink-0"></i>40+ businesses automated</div>
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 gap-8 text-sm">
+      <div>
+        <p class="font-semibold text-ink mb-3 flex items-center gap-2"><i data-lucide="building-2" class="w-4 h-4 text-muted"></i>Company</p>
+        <ul class="space-y-2.5 text-muted">
+          <li><a href="/#services" class="hover:text-ink transition-colors">Services</a></li>
+          <li><a href="/#showcase" class="hover:text-ink transition-colors">Results</a></li>
+          <li><a href="/#how-it-works" class="hover:text-ink transition-colors">How it works</a></li>
+          <li><a href="/#faq" class="hover:text-ink transition-colors">FAQ</a></li>
+          <li><a href="/#contact" class="hover:text-ink transition-colors cursor-hover">Book a call</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="font-semibold text-ink mb-3 flex items-center gap-2"><i data-lucide="book-open" class="w-4 h-4 text-muted"></i>Resources</p>
+        <ul class="space-y-2.5 text-muted">
+          <li><a href="/#roi" class="hover:text-ink transition-colors">ROI calculator</a></li>
+          <li><a href="/#proposal" class="hover:text-ink transition-colors">Proposal generator</a></li>
+          <li><a href="/solutions/" class="hover:text-ink transition-colors">All solutions</a></li>
+          <li><a href="/solutions/lead-follow-up-automation/" class="hover:text-ink transition-colors">Lead follow-up automation</a></li>
+          <li><a href="/solutions/crm-automation/" class="hover:text-ink transition-colors">CRM automation</a></li>
+          <li><a href="/solutions/invoice-automation/" class="hover:text-ink transition-colors">Invoice automation</a></li>
+          <li><a href="/solutions/customer-support-automation/" class="hover:text-ink transition-colors">Customer support automation</a></li>
+          <li><a href="/solutions/employee-onboarding-automation/" class="hover:text-ink transition-colors">Employee onboarding automation</a></li>
+          <li><a href="/guides/ai-automation-cost-and-roi/" class="hover:text-ink transition-colors">Automation cost &amp; ROI guide</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="font-semibold text-ink mb-3 flex items-center gap-2"><i data-lucide="mail" class="w-4 h-4 text-muted"></i>Contact</p>
+        <ul class="space-y-2.5 text-muted">
+          <li><a href="mailto:hello@autenflo.com" class="hover:text-ink transition-colors">hello@autenflo.com</a></li>
+          <li><span>Remote-first, global team</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-10 pt-6 border-t border-line flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-muted">
+      <p>© <span id="year"></span> autenflo. All rights reserved.</p>
+      <div class="flex gap-5"><a href="#" class="hover:text-ink transition-colors">Privacy</a><a href="#" class="hover:text-ink transition-colors">Terms</a></div>
+    </div>
+  </div>
+</footer>
+<script>
+  lucide.createIcons();
+  var y = document.getElementById('year'); if (y) y.textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
